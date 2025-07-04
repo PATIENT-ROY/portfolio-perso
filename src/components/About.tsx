@@ -1,6 +1,6 @@
 import Title from "./Title";
 import img from "../assets/2.png";
-import { CalendarSync, LetterText } from "lucide-react";
+import { LetterText } from "lucide-react";
 
 const aboutSections = [
   {
@@ -9,12 +9,6 @@ const aboutSections = [
     description:
       "I always strive to learn and improve my skills in order to create high-quality and effective web applications.",
     icon: <LetterText className="text-accent scale-150" />,
-  },
-  {
-    id: 2,
-    title: "Développeur Backend",
-    description: "for the future",
-    icon: <CalendarSync className="text-accent scale-150" />,
   },
 ];
 

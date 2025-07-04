@@ -1,4 +1,6 @@
 import Title from "./Title";
+import OptimizedImage from "./OptimizedImage";
+import { motion } from "framer-motion";
 import img1 from "../assets/projects/1.png";
 import img2 from "../assets/projects/2.png";
 import img3 from "../assets/projects/3.png";
@@ -82,16 +84,48 @@ const projects = [
 ];
 
 const Projects = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+      },
+    },
+  };
+
   return (
     <div className="mt-10" id="Projects">
       <Title title="My Projects" />
-      <div className="grid md:grid-cols-3 gap-4">
+      <motion.div
+        className="grid md:grid-cols-3 gap-4"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+      >
         {projects.map((project) => (
-          <div
+          <motion.div
             key={project.id}
-            className="bg-base-300 p-5 h-fit rounded-xl shadow-lg"
+            className="bg-base-300 p-5 h-fit rounded-xl shadow-lg hover:shadow-2xl transition-shadow"
+            variants={cardVariants}
+            whileHover={{
+              y: -10,
+              transition: { duration: 0.3 },
+            }}
           >
-            <img
+            <OptimizedImage
               src={project.image}
               alt={project.title}
               className="w-full rounded-xl h-56 object-cover"
@@ -102,26 +136,38 @@ const Projects = () => {
             </div>
             <div className="flex flex-wrap gap-2 my-3">
               {project.technologies.map((tech, index) => (
-                <span
+                <motion.span
                   key={`${project.id}-${index}`}
                   className="badge badge-accent badge-sm"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
                 >
                   {tech}
-                </span>
+                </motion.span>
               ))}
             </div>
             <div className="flex">
-              <a className="btn btn-accent w-2/3" href={project.demoLink}>
+              <motion.a
+                className="btn btn-accent w-2/3"
+                href={project.demoLink}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 Demo
                 <Video className="w-4" />
-              </a>
-              <a className="btn btn-neutral w-1/3 ml-2" href={project.repoLink}>
+              </motion.a>
+              <motion.a
+                className="btn btn-neutral w-1/3 ml-2"
+                href={project.repoLink}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Github className="w-4" />
-              </a>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 };
