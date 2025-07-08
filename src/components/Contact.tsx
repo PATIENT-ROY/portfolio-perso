@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Send, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Send, Phone, MapPin, MessageCircle, Globe } from "lucide-react";
 import Title from "./Title";
 
 const Contact = () => {
@@ -64,14 +64,20 @@ const Contact = () => {
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      title: "Téléphone",
+      title: "Phone",
       value: "+33 6 12 34 56 78",
       link: "tel:+33612345678",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      title: "Localisation",
-      value: "France",
+      title: "Location",
+      value: "Russia, Ekaterinburg",
+      link: "#",
+    },
+    {
+      icon: <Globe className="w-6 h-6" />,
+      title: "operating mode",
+      value: "Remote",
       link: "#",
     },
   ];
@@ -83,11 +89,12 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Informations de contact */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold mb-6">Parlons de votre projet</h3>
+            <h3 className="text-2xl font-bold mb-6">
+              Let's talk about your project
+            </h3>
             <p className="text-base-content/80">
-              Je suis toujours ouvert à de nouvelles opportunités et
-              collaborations. N'hésitez pas à me contacter pour discuter de vos
-              projets !
+              I am always open to new opportunities and collaborations. Do not
+              hesitate to contact me to discuss your projects!
             </p>
 
             <div className="space-y-4">
@@ -151,7 +158,7 @@ const Contact = () => {
                     htmlFor="name"
                     className="block text-sm font-medium mb-2"
                   >
-                    Nom complet *
+                    Full name *
                   </label>
                   <input
                     type="text"
@@ -161,7 +168,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     className="input input-bordered w-full"
-                    placeholder="Votre nom"
+                    placeholder="Your name"
                   />
                 </div>
                 <div>
@@ -185,8 +192,8 @@ const Contact = () => {
                     className="input input-bordered w-full"
                     placeholder={
                       contactMethod === "email"
-                        ? "votre@email.com"
-                        : "@votre_username"
+                        ? "your@email.com"
+                        : "@your_username"
                     }
                   />
                 </div>
@@ -207,7 +214,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="input input-bordered w-full"
-                  placeholder="Sujet de votre message"
+                  placeholder="Subject of your message"
                 />
               </div>
 
@@ -226,21 +233,19 @@ const Contact = () => {
                   required
                   rows={5}
                   className="textarea textarea-bordered w-full"
-                  placeholder="Décrivez votre projet..."
+                  placeholder="Describe your project..."
                 />
               </div>
 
               {submitStatus === "success" && (
                 <div className="alert alert-success">
-                  <span>
-                    Message envoyé avec succès ! Je vous répondrai bientôt.
-                  </span>
+                  <span>Message sent successfully! I will reply soon.</span>
                 </div>
               )}
 
               {submitStatus === "error" && (
                 <div className="alert alert-error">
-                  <span>Erreur lors de l'envoi. Veuillez réessayer.</span>
+                  <span>Error sending message. Please try again.</span>
                 </div>
               )}
 
@@ -252,12 +257,12 @@ const Contact = () => {
                 {isSubmitting ? (
                   <>
                     <span className="loading loading-spinner loading-sm"></span>
-                    Envoi en cours...
+                    Sending...
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    Envoyer le message
+                    Send message
                   </>
                 )}
               </button>
