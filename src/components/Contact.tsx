@@ -53,8 +53,8 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6" />,
       title: "Email",
-      value: "roydev@example.com",
-      link: "mailto:roydev@example.com",
+      value: "contact@roydev.com",
+      link: "mailto:contact@roydev.com",
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,

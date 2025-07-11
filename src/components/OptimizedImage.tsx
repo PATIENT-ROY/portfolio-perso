@@ -78,6 +78,9 @@ const OptimizedImage = ({
         onLoad={handleLoad}
         onError={handleError}
         loading="lazy"
+        style={{
+          imageRendering: "auto",
+        }}
       />
       {!isLoaded && !isError && (
         <div className="absolute inset-0 bg-base-300 animate-pulse rounded-lg" />

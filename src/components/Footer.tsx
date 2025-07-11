@@ -14,31 +14,30 @@ const Footer = () => {
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a
-            href="https://twitter.com"
+            href="https://github.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="GitHub"
           >
             <Twitter className="w-6 h-6 text-current" />
           </a>
           <a
-            href="https://youtube.com"
+            href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
           >
             <Youtube className="w-6 h-6 text-current" />
           </a>
           <a
-            href="https://facebook.com"
+            href="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Twitter"
           >
             <Facebook className="w-6 h-6 text-current" />
           </a>
-          <a
-            href="https://instagram.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="mailto:roydev@example.com" aria-label="Email">
             <Instagram className="w-6 h-6 text-current" />
           </a>
         </div>
