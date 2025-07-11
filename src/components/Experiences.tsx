@@ -8,7 +8,7 @@ import imgGithub from "../assets/techno/github.png";
 import imgTYPE from "../assets/techno/typescript.svg";
 import imgTAILWIND from "../assets/techno/tailwind.png";
 import imgNODE from "../assets/techno/node-js.png";
-import imgNEXT from "../assets/techno/next.png";
+import imgNEXT from "../assets/techno/Next.png";
 
 const skills = [
   { id: 1, name: "HTML", image: imgHTML },
