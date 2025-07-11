@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import ScrollProgress from "./components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
 import SEOHead from "./components/SEOHead";
 import { ThemeProvider } from "./contexts/ThemeContext";
 
@@ -14,6 +15,7 @@ export default function App() {
     <ThemeProvider>
       <SEOHead />
       <ScrollProgress />
+      <ScrollToTop />
       <div>
         <div className="p-5 md:px-[15%]">
           <Navbar />
@@ -22,7 +24,9 @@ export default function App() {
         <About />
         <div className="p-5 md:px-[15%]">
           <Experiences />
-          <Projects />
+          <div className="mt-16">
+            <Projects />
+          </div>
         </div>
         <Contact />
         <Footer />

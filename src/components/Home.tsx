@@ -32,7 +32,7 @@ const Home = () => {
           I am a frontend developer
           <br />
           using React and typescript.
-          <br /> Contact me if you need my services.
+          <br /> Contact me if you need my services ( a website and a web App).
         </motion.p>
         <motion.a
           href="#Contact"

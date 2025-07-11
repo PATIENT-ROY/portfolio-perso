@@ -139,83 +139,87 @@ const Projects = () => {
   return (
     <div className="mt-10" id="Projects">
       <Title title="My Projects" />
-      <motion.div
-        className="grid md:grid-cols-3 gap-4"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            className="bg-base-300 p-5 h-[600px] w-full max-w-sm rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col"
-            variants={cardVariants}
-            whileHover={{
-              y: -10,
-              transition: { duration: 0.3 },
-            }}
-          >
-            <OptimizedImage
-              src={project.image}
-              alt={project.title}
-              className="w-full rounded-xl h-48 object-cover flex-shrink-0"
-            />
-            <div className="flex-1 flex flex-col">
-              <h1 className="my-2 font-bold text-lg">{project.title}</h1>
-              <p className="text-sm flex-1 mb-3">{project.description}</p>
-              {project.role && (
-                <div className="mb-3">
-                  <span className="badge badge-primary badge-sm mr-2">
-                    {project.role}
-                  </span>
-                  {project.contributions && (
-                    <div className="mt-1 text-xs text-base-content/70">
-                      <strong>Contributions :</strong>{" "}
-                      {project.contributions.join(", ")}
-                    </div>
-                  )}
+      <div className="flex justify-center">
+        <motion.div
+          className="grid md:grid-cols-3 gap-4 max-w-6xl"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              className="bg-base-300 p-5 h-[600px] md:h-auto md:min-h-[650px] w-full max-w-sm md:max-w-3xl lg:max-w-2xl rounded-xl shadow-lg hover:shadow-2xl transition-shadow flex flex-col"
+              variants={cardVariants}
+              whileHover={{
+                y: -10,
+                transition: { duration: 0.3 },
+              }}
+            >
+              <div className="w-full h-48 rounded-xl overflow-hidden flex-shrink-0">
+                <OptimizedImage
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex-1 flex flex-col">
+                <h1 className="my-2 font-bold text-lg">{project.title}</h1>
+                <p className="text-sm flex-1 mb-3">{project.description}</p>
+                {project.role && (
+                  <div className="mb-3">
+                    <span className="badge badge-primary badge-sm mr-2">
+                      {project.role}
+                    </span>
+                    {project.contributions && (
+                      <div className="mt-1 text-xs text-base-content/70">
+                        <strong>Contributions :</strong>{" "}
+                        {project.contributions.join(", ")}
+                      </div>
+                    )}
+                  </div>
+                )}
+                <div className="flex flex-wrap gap-2 mb-3">
+                  {project.technologies.map((tech, index) => (
+                    <motion.span
+                      key={`${project.id}-${index}`}
+                      className="badge badge-accent badge-sm"
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
                 </div>
-              )}
-              <div className="flex flex-wrap gap-2 mb-3">
-                {project.technologies.map((tech, index) => (
-                  <motion.span
-                    key={`${project.id}-${index}`}
-                    className="badge badge-accent badge-sm"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
+                <div className="flex mt-auto">
+                  <motion.a
+                    className="btn btn-accent w-2/3"
+                    href={project.demoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
-                    {tech}
-                  </motion.span>
-                ))}
+                    Demo
+                    <Video className="w-4" />
+                  </motion.a>
+                  <motion.a
+                    className="btn btn-neutral w-1/3 ml-2"
+                    href={project.repoLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github className="w-4" />
+                  </motion.a>
+                </div>
               </div>
-              <div className="flex mt-auto">
-                <motion.a
-                  className="btn btn-accent w-2/3"
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Demo
-                  <Video className="w-4" />
-                </motion.a>
-                <motion.a
-                  className="btn btn-neutral w-1/3 ml-2"
-                  href={project.repoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Github className="w-4" />
-                </motion.a>
-              </div>
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
     </div>
   );
 };

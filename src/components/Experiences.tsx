@@ -48,9 +48,9 @@ const Experiences = () => {
   return (
     <div id="Experiences">
       <Title title="Experiences" />
-      <div className="flex flex-col-reverse md:flex-row justify-center items-center">
+      <div className="flex flex-col-reverse md:flex-row justify-center items-center mt-4">
         <motion.div
-          className="flex flex-wrap gap-4 justify-center items-center md:w-1/3 mt-4 md:mt-0"
+          className="flex flex-wrap gap-2 justify-center items-center md:w-1/2 mt-4 md:mt-0"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
