@@ -26,7 +26,7 @@ export const useGSAP = () => {
             trigger: elementRef.current,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );
@@ -51,7 +51,7 @@ export const useGSAP = () => {
             trigger: elementRef.current,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );
@@ -76,7 +76,7 @@ export const useGSAP = () => {
             trigger: elementRef.current,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );
@@ -101,7 +101,7 @@ export const useGSAP = () => {
             trigger: elementRef.current,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );
@@ -127,7 +127,7 @@ export const useGSAP = () => {
             trigger: elementRef.current,
             start: 'top 80%',
             end: 'bottom 20%',
-            toggleActions: 'play reverse play reverse',
+            toggleActions: 'play none none reverse',
           },
         }
       );

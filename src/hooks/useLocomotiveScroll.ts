@@ -70,10 +70,32 @@ export const useLocomotiveScroll = () => {
     }
   };
 
+  const scrollToSection = (sectionId: string) => {
+    if (locomotiveRef.current) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        locomotiveRef.current.scrollTo(element, {
+          duration: 1.5,
+          offset: -100, // Offset pour tenir compte de la navbar
+        });
+      }
+    } else {
+      // Fallback pour le scroll normal
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  };
+
   return {
     scrollRef,
     locomotiveRef,
     scrollTo,
     scrollToTop,
+    scrollToSection,
   };
 }; 
