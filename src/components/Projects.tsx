@@ -129,8 +129,6 @@ const Projects = () => {
     }
   }, [isLoading, staggerChildren]);
 
-  console.log("Projects component is rendering");
-
   return (
     <div className="mt-10" id="Projects">
       <Title title="My Projects" />
@@ -155,8 +153,8 @@ const Projects = () => {
                     <div className="h-6 w-20 bg-base-200 rounded animate-pulse"></div>
                   </div>
                   <div className="flex mt-auto">
-                    <div className="h-10 w-2/3 bg-base-200 rounded animate-pulse"></div>
-                    <div className="h-10 w-1/3 ml-2 bg-base-200 rounded animate-pulse"></div>
+                    <div className="h-8 flex-1 bg-base-200 rounded animate-pulse"></div>
+                    <div className="h-8 w-1/3 ml-2 bg-base-200 rounded animate-pulse"></div>
                   </div>
                 </div>
               ))
@@ -172,7 +170,6 @@ const Projects = () => {
                       alt={project.title}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        console.error(`ERREUR IMAGE ${project.id}:`, e);
                         e.currentTarget.style.display = "none";
                         if (e.currentTarget.parentElement) {
                           e.currentTarget.parentElement.innerHTML = `
@@ -184,9 +181,6 @@ const Projects = () => {
                           </div>
                         `;
                         }
-                      }}
-                      onLoad={() => {
-                        console.log(`SUCCÈS IMAGE ${project.id}`);
                       }}
                     />
                   </div>

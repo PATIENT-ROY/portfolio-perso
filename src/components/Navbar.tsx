@@ -1,6 +1,5 @@
 import { Container, Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "../contexts/ThemeContext";
 
 const Navbar = () => {
@@ -90,58 +89,33 @@ const Navbar = () => {
       </button>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            className="absolute top-full left-0 right-0 bg-base-100 shadow-lg border-t border-base-300 md:hidden z-50"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <motion.ul
-              className="flex flex-col space-y-2 p-4"
-              initial="hidden"
-              animate="visible"
-              variants={{
-                hidden: { opacity: 0 },
-                visible: {
-                  opacity: 1,
-                  transition: {
-                    staggerChildren: 0.1,
-                  },
-                },
-              }}
-            >
-              {[
-                { href: "#Home", label: "Home" },
-                { href: "#About", label: "About" },
-                { href: "#Experiences", label: "Experiences" },
-                { href: "#Projects", label: "My Projects" },
-                { href: "#Contact", label: "Contact" },
-              ].map((item) => (
-                <motion.li
-                  key={item.href}
-                  variants={{
-                    hidden: { opacity: 0, x: -20 },
-                    visible: { opacity: 1, x: 0 },
-                  }}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 right-0 bg-base-100 shadow-lg border-t border-base-300 md:hidden z-50 animate-slide-down">
+          <ul className="flex flex-col space-y-2 p-4">
+            {[
+              { href: "#Home", label: "Home" },
+              { href: "#About", label: "About" },
+              { href: "#Experiences", label: "Experiences" },
+              { href: "#Projects", label: "My Projects" },
+              { href: "#Contact", label: "Contact" },
+            ].map((item, index) => (
+              <li
+                key={item.href}
+                className="animate-fade-in"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <a
+                  href={item.href}
+                  className="block w-full text-left p-3 rounded-lg hover:bg-accent hover:text-accent-content transition-all duration-300 hover:translate-x-2"
+                  onClick={closeMenu}
                 >
-                  <motion.a
-                    href={item.href}
-                    className="block w-full text-left p-3 rounded-lg hover:bg-accent hover:text-accent-content transition-colors"
-                    onClick={closeMenu}
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.label}
-                  </motion.a>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
