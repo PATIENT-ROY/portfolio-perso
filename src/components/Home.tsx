@@ -2,7 +2,11 @@ import { Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import img from "../assets/3.png";
 
-const Home = () => {
+interface HomeProps {
+  onNavigate: (sectionId: string) => void;
+}
+
+const Home = ({ onNavigate }: HomeProps) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -50,8 +54,8 @@ const Home = () => {
           using React and typescript.
           <br /> Contact me if you need my services ( a website and a web App).
         </p>
-        <a
-          href="#Contact"
+        <button
+          onClick={() => onNavigate("Contact")}
           className={`btn btn-accent md:w-fit hover:scale-105 transition-all duration-800 ease-out delay-900 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
@@ -60,7 +64,7 @@ const Home = () => {
         >
           <Mail className="w-5 h-5" />
           Contact-me
-        </a>
+        </button>
       </div>
 
       <div

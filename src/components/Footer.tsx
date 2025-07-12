@@ -1,4 +1,10 @@
-import { Container, Facebook, Instagram, Twitter, Youtube } from "lucide-react";
+import {
+  Container,
+  Instagram,
+  Linkedin,
+  MessageCircle,
+  Mail,
+} from "lucide-react";
 
 const Footer = () => {
   return (
@@ -14,31 +20,38 @@ const Footer = () => {
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a
-            href="https://github.com"
+            href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="GitHub"
+            aria-label="Instagram"
+            className="p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:shadow-lg"
           >
-            <Twitter className="w-6 h-6 text-current" />
+            <Instagram className="w-6 h-6 text-current hover:text-white transition-colors duration-300" />
           </a>
           <a
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
+            className="p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:bg-blue-600 hover:shadow-lg"
           >
-            <Youtube className="w-6 h-6 text-current" />
+            <Linkedin className="w-6 h-6 text-current hover:text-white transition-colors duration-300" />
           </a>
           <a
-            href="https://twitter.com"
+            href="https://t.me/roydev"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="Twitter"
+            aria-label="Telegram"
+            className="p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:bg-blue-500 hover:shadow-lg"
           >
-            <Facebook className="w-6 h-6 text-current" />
+            <MessageCircle className="w-6 h-6 text-current hover:text-white transition-colors duration-300" />
           </a>
-          <a href="mailto:roydev@example.com" aria-label="Email">
-            <Instagram className="w-6 h-6 text-current" />
+          <a
+            href="mailto:contact@roydev.com"
+            aria-label="Email"
+            className="p-2 rounded-lg transition-all duration-300 hover:scale-110 hover:bg-red-500 hover:shadow-lg"
+          >
+            <Mail className="w-6 h-6 text-current hover:text-white transition-colors duration-300" />
           </a>
         </div>
       </nav>

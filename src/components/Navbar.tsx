@@ -2,7 +2,11 @@ import { Container, Menu, X, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
-const Navbar = () => {
+interface NavbarProps {
+  onNavigate: (sectionId: string) => void;
+}
+
+const Navbar = ({ onNavigate }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
@@ -14,55 +18,63 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  const handleNavigation = (sectionId: string) => {
+    onNavigate(sectionId);
+    closeMenu();
+  };
+
   return (
     <div className="flex justify-center md:justify-between items-center p-4 relative">
-      <a href="#" className="flex items-center font-bold text-3xl md:text-xl">
+      <button
+        onClick={() => handleNavigation("Home")}
+        className="flex items-center font-bold text-3xl md:text-xl cursor-pointer hover:opacity-80 transition-opacity"
+      >
         <Container className="mr-2" />
         ROY
         <span className="text-accent">DEV</span>
-      </a>
+      </button>
 
       {/* Desktop Menu */}
       <ul className="hidden md:flex space-x-4">
         <li>
-          <a
-            href="#Home"
+          <button
+            onClick={() => handleNavigation("Home")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
             Home
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#About"
+          <button
+            onClick={() => handleNavigation("About")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
             About
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#Experiences"
+          <button
+            onClick={() => handleNavigation("Experiences")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
             Experiences
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#Projects"
+          <button
+            onClick={() => handleNavigation("Projects")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
             My Projects
-          </a>
+          </button>
         </li>
         <li>
-          <a
-            href="#Contact"
+          <button
+            onClick={() => handleNavigation("Contact")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
             Contact
-          </a>
+          </button>
         </li>
       </ul>
 
@@ -93,24 +105,23 @@ const Navbar = () => {
         <div className="absolute top-full left-0 right-0 bg-base-100 shadow-lg border-t border-base-300 md:hidden z-50 animate-slide-down">
           <ul className="flex flex-col space-y-2 p-4">
             {[
-              { href: "#Home", label: "Home" },
-              { href: "#About", label: "About" },
-              { href: "#Experiences", label: "Experiences" },
-              { href: "#Projects", label: "My Projects" },
-              { href: "#Contact", label: "Contact" },
+              { id: "Home", label: "Home" },
+              { id: "About", label: "About" },
+              { id: "Experiences", label: "Experiences" },
+              { id: "Projects", label: "My Projects" },
+              { id: "Contact", label: "Contact" },
             ].map((item, index) => (
               <li
-                key={item.href}
+                key={item.id}
                 className="animate-fade-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <a
-                  href={item.href}
+                <button
+                  onClick={() => handleNavigation(item.id)}
                   className="block w-full text-left p-3 rounded-lg hover:bg-accent hover:text-accent-content transition-all duration-300 hover:translate-x-2"
-                  onClick={closeMenu}
                 >
                   {item.label}
-                </a>
+                </button>
               </li>
             ))}
           </ul>

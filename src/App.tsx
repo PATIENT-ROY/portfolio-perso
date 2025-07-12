@@ -14,7 +14,7 @@ import { useLocomotiveScroll } from "./hooks/useLocomotiveScroll";
 
 export default function App() {
   const [showWelcome, setShowWelcome] = useState(true);
-  const { scrollRef, scrollToTop } = useLocomotiveScroll();
+  const { scrollRef, scrollToTop, scrollToSection } = useLocomotiveScroll();
 
   const handleWelcomeComplete = () => {
     setShowWelcome(false);
@@ -30,8 +30,8 @@ export default function App() {
           <ScrollToTop onScrollToTop={scrollToTop} />
           <div>
             <div className="p-5 md:px-[15%]">
-              <Navbar />
-              <Home />
+              <Navbar onNavigate={scrollToSection} />
+              <Home onNavigate={scrollToSection} />
             </div>
             <About />
             <div className="p-5 md:px-[15%]">
