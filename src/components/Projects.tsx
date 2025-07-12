@@ -1,17 +1,17 @@
 import Title from "./Title";
-import { motion } from "framer-motion";
 import { Github, Video } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useGSAP } from "../hooks/useGSAP";
 
 // Import des images locales
-import img1 from "../assets/projects/1.png";
-import img2 from "../assets/projects/2.png";
-import img3 from "../assets/projects/3.png";
-import img4 from "../assets/projects/4.png";
-import img5 from "../assets/projects/5.png";
-import img6 from "../assets/projects/6.png";
-import img7 from "../assets/projects/7.png";
-import img8 from "../assets/projects/8.png";
+import img1 from "../assets/projects/1.jpg";
+import img2 from "../assets/projects/2.jpg";
+import img3 from "../assets/projects/3.jpg";
+import img4 from "../assets/projects/4.jpg";
+import img5 from "../assets/projects/5.jpg";
+import img6 from "../assets/projects/6.jpg";
+import img7 from "../assets/projects/7.jpg";
+import img8 from "../assets/projects/8.jpg";
 
 const projects = [
   {
@@ -111,56 +111,41 @@ const projects = [
 
 const Projects = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const { elementRef, staggerChildren } = useGSAP();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 800);
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    if (!isLoading) {
+      // Appliquer l'animation stagger après le chargement
+      setTimeout(() => {
+        staggerChildren(0.1);
+      }, 100);
+    }
+  }, [isLoading, staggerChildren]);
+
   console.log("Projects component is rendering");
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-      },
-    },
-  };
 
   return (
     <div className="mt-10" id="Projects">
       <Title title="My Projects" />
 
       <div className="flex justify-center">
-        <motion.div
+        <div
+          ref={elementRef}
           className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-6xl w-full px-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
         >
           {isLoading
-            ? // Skeletons
+            ? // Skeletons simples
               Array.from({ length: 6 }, (_, index) => (
-                <motion.div
+                <div
                   key={`skeleton-${index}`}
                   className="bg-base-300 p-5 min-h-[400px] rounded-xl shadow-lg flex flex-col"
-                  variants={cardVariants}
                 >
                   <div className="w-full h-48 rounded-xl bg-base-200 animate-pulse mb-4"></div>
                   <div className="h-6 bg-base-200 rounded animate-pulse mb-2"></div>
@@ -173,18 +158,13 @@ const Projects = () => {
                     <div className="h-10 w-2/3 bg-base-200 rounded animate-pulse"></div>
                     <div className="h-10 w-1/3 ml-2 bg-base-200 rounded animate-pulse"></div>
                   </div>
-                </motion.div>
+                </div>
               ))
-            : // Vrais projets
+            : // Vrais projets avec GSAP
               projects.map((project) => (
-                <motion.div
+                <div
                   key={project.id}
-                  className="bg-base-300 p-5 min-h-[400px] rounded-xl shadow-lg flex flex-col"
-                  variants={cardVariants}
-                  whileHover={{
-                    y: -10,
-                    transition: { duration: 0.3 },
-                  }}
+                  className="bg-base-300 p-5 min-h-[400px] rounded-xl shadow-lg flex flex-col hover:shadow-xl transition-shadow duration-300"
                 >
                   <div className="w-full h-48 rounded-xl overflow-hidden bg-base-200 mb-4">
                     <img
@@ -234,43 +214,37 @@ const Projects = () => {
 
                   <div className="flex flex-wrap gap-2 mb-3 justify-center sm:justify-start">
                     {project.technologies.map((tech, index) => (
-                      <motion.span
+                      <span
                         key={`${project.id}-${index}`}
                         className="badge badge-accent badge-sm"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
                   </div>
 
                   <div className="flex mt-auto">
-                    <motion.a
-                      className="btn btn-accent w-2/3"
+                    <a
+                      className="btn btn-accent w-2/3 hover:btn-accent-focus transition-colors"
                       href={project.demoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                     >
                       Demo
                       <Video className="w-4" />
-                    </motion.a>
-                    <motion.a
-                      className="btn btn-neutral w-1/3 ml-2"
+                    </a>
+                    <a
+                      className="btn btn-neutral w-1/3 ml-2 hover:btn-neutral-focus transition-colors"
                       href={project.repoLink}
                       target="_blank"
                       rel="noopener noreferrer"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
                     >
                       <Github className="w-4" />
-                    </motion.a>
+                    </a>
                   </div>
-                </motion.div>
+                </div>
               ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );

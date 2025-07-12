@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Mail, Send, Phone, MapPin, MessageCircle, Globe } from "lucide-react";
 import Title from "./Title";
+import { useGSAP } from "../hooks/useGSAP";
 
 const Contact = () => {
   const [contactMethod, setContactMethod] = useState<"email" | "telegram">(
@@ -17,6 +18,23 @@ const Contact = () => {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+
+  const { elementRef, fadeInLeft, fadeInRight, staggerChildren } = useGSAP();
+
+  useEffect(() => {
+    // Animation pour les informations de contact (gauche)
+    fadeInLeft(0.2);
+
+    // Animation pour le formulaire (droite)
+    setTimeout(() => {
+      fadeInRight(0.3);
+    }, 200);
+
+    // Animation stagger pour les éléments de contact
+    setTimeout(() => {
+      staggerChildren(0.1);
+    }, 400);
+  }, [fadeInLeft, fadeInRight, staggerChildren]);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -88,7 +106,7 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8">
           {/* Informations de contact */}
-          <div className="space-y-6">
+          <div ref={elementRef} className="space-y-6">
             <h3 className="text-2xl font-bold mb-6">
               Let's talk about your project
             </h3>
@@ -99,8 +117,13 @@ const Contact = () => {
 
             <div className="space-y-4">
               {contactInfo.map((info, index) => (
-                <div key={index} className="flex items-center space-x-4">
-                  <div className="p-3 bg-accent/20 rounded-lg">{info.icon}</div>
+                <div
+                  key={index}
+                  className="flex items-center space-x-4 hover:scale-105 transition-transform duration-300"
+                >
+                  <div className="p-3 bg-accent/20 rounded-lg hover:bg-accent/30 transition-colors">
+                    {info.icon}
+                  </div>
                   <div>
                     <h4 className="font-semibold">{info.title}</h4>
                     <a
@@ -124,7 +147,7 @@ const Contact = () => {
           </div>
 
           {/* Formulaire */}
-          <div className="bg-base-100 p-6 rounded-xl shadow-lg">
+          <div className="bg-base-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
             {/* Toggle Email/Telegram */}
             <div className="flex justify-center mb-6">
               <div className="join">
@@ -167,7 +190,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full focus:input-accent transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -189,7 +212,7 @@ const Contact = () => {
                     }
                     onChange={handleChange}
                     required
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full focus:input-accent transition-colors"
                     placeholder={
                       contactMethod === "email"
                         ? "your@email.com"
@@ -213,7 +236,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="input input-bordered w-full"
+                  className="input input-bordered w-full focus:input-accent transition-colors"
                   placeholder="Subject of your message"
                 />
               </div>
@@ -232,7 +255,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="textarea textarea-bordered w-full"
+                  className="textarea textarea-bordered w-full focus:textarea-accent transition-colors"
                   placeholder="Describe your project..."
                 />
               </div>
@@ -252,7 +275,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="btn btn-accent w-full"
+                className="btn btn-accent w-full hover:btn-accent-focus transition-colors"
               >
                 {isSubmitting ? (
                   <>
