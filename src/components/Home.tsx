@@ -4,17 +4,12 @@ import { useGSAP } from "../hooks/useGSAP";
 import img from "../assets/3.png";
 
 const Home = () => {
-  const { elementRef, fadeInLeft, fadeInRight } = useGSAP();
+  const { elementRef, fadeInUp } = useGSAP();
 
   useEffect(() => {
-    // Animation pour le texte (gauche)
-    fadeInLeft(0.2);
-
-    // Animation pour l'image (droite)
-    setTimeout(() => {
-      fadeInRight(0.3);
-    }, 200);
-  }, [fadeInLeft, fadeInRight]);
+    // Animation douce pour le texte
+    fadeInUp(0.3);
+  }, [fadeInUp]);
 
   return (
     <div

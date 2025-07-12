@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Mail, Send, Phone, MapPin, MessageCircle, Globe } from "lucide-react";
+import { Mail, Send, MapPin, MessageCircle, Globe } from "lucide-react";
 import Title from "./Title";
 import { useGSAP } from "../hooks/useGSAP";
 
@@ -79,12 +79,6 @@ const Contact = () => {
       title: "Telegram",
       value: "@roydev",
       link: "https://t.me/roydev",
-    },
-    {
-      icon: <Phone className="w-6 h-6" />,
-      title: "Phone",
-      value: "+33 6 12 34 56 78",
-      link: "tel:+33612345678",
     },
     {
       icon: <MapPin className="w-6 h-6" />,
