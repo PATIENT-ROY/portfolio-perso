@@ -1,6 +1,8 @@
 import Title from "./Title";
 import img from "../assets/2.png";
 import { LetterText, Code, Zap } from "lucide-react";
+import { useEffect } from "react";
+import { useGSAP } from "../hooks/useGSAP";
 
 const aboutSections = [
   {
@@ -27,6 +29,18 @@ const aboutSections = [
 ];
 
 const About = () => {
+  const { elementRef, fadeInLeft, staggerChildren } = useGSAP();
+
+  useEffect(() => {
+    // Animation pour l'image (gauche)
+    fadeInLeft(0.2);
+
+    // Animation pour les sections (droite)
+    setTimeout(() => {
+      staggerChildren(0.2);
+    }, 300);
+  }, [fadeInLeft, staggerChildren]);
+
   return (
     <div className="bg-base-300 p-6 md:p-10 mb-10 md:mb-32" id="About">
       <Title title="About" />
@@ -35,15 +49,18 @@ const About = () => {
           <img
             src={img}
             alt="Profile"
-            className="w-80 md:w-96 object-cover rounded-xl shadow-xl"
+            className="w-80 md:w-96 object-cover rounded-xl shadow-xl hover:scale-105 transition-transform duration-300"
           />
         </div>
 
-        <div className="w-full max-w-2xl space-y-4 md:space-y-6">
+        <div
+          ref={elementRef}
+          className="w-full max-w-2xl space-y-4 md:space-y-6"
+        >
           {aboutSections.map((section) => (
             <div
               key={section.id}
-              className="flex flex-col md:flex-row items-center bg-base-100 p-4 md:p-5 rounded-xl shadow-xl hover:shadow-2xl transition-shadow"
+              className="flex flex-col md:flex-row items-center bg-base-100 p-4 md:p-5 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105"
             >
               <div className="mb-3 md:mb-0 md:mr-4 flex-shrink-0">
                 {section.icon}
