@@ -41,7 +41,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
             onClick={() => handleNavigation("Home")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
-            Home
+            Главная
           </button>
         </li>
         <li>
@@ -49,7 +49,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
             onClick={() => handleNavigation("About")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
-            About
+            О нас
           </button>
         </li>
         <li>
@@ -57,7 +57,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
             onClick={() => handleNavigation("Experiences")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
-            Experiences
+            Навыки
           </button>
         </li>
         <li>
@@ -65,7 +65,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
             onClick={() => handleNavigation("Projects")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
-            My Projects
+            Проекты
           </button>
         </li>
         <li>
@@ -73,7 +73,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
             onClick={() => handleNavigation("Contact")}
             className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
           >
-            Contact
+            Контакты
           </button>
         </li>
       </ul>
@@ -105,11 +105,11 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
         <div className="absolute top-full left-0 right-0 bg-base-100 shadow-lg border-t border-base-300 md:hidden z-50 animate-slide-down">
           <ul className="flex flex-col space-y-2 p-4">
             {[
-              { id: "Home", label: "Home" },
-              { id: "About", label: "About" },
-              { id: "Experiences", label: "Experiences" },
-              { id: "Projects", label: "My Projects" },
-              { id: "Contact", label: "Contact" },
+              { id: "Home", label: "Главная" },
+              { id: "About", label: "О нас" },
+              { id: "Experiences", label: "Навыки" },
+              { id: "Projects", label: "Проекты" },
+              { id: "Contact", label: "Контакты" },
             ].map((item, index) => (
               <li
                 key={item.id}

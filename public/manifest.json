@@ -1,7 +1,7 @@
 {
-    "name": "RoyDev Portfolio",
-    "short_name": "RoyDev",
-    "description": "Portfolio de RoyDev, développeur frontend React & TypeScript",
+    "name": "Портфолио Ройдева",
+    "short_name": "Ройдев",
+    "description": "Портфолио Ройдева, frontend-разработчика React & TypeScript",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -34,6 +34,6 @@
         }
     ],
     "categories": ["productivity", "utilities"],
-    "lang": "fr",
+    "lang": "ru",
     "dir": "ltr"
 }

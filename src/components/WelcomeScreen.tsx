@@ -77,12 +77,12 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
     <div className="fixed inset-0 bg-base-100 z-50 flex items-center justify-center">
       <div className="welcome-container text-center">
         <h1 className="welcome-text text-4xl md:text-6xl font-bold text-base-content mb-8">
-          Welcome to my <span className="text-accent">portfolio website</span>
+          Добро пожаловать в моё <span className="text-accent">портфолио</span>
         </h1>
 
         <div className="welcome-text mb-8">
           <p className="text-lg md:text-xl text-base-content/70">
-            Frontend Developer & UI/UX Enthusiast
+            Frontend-разработчик & UI/UX энтузиаст
           </p>
         </div>
 
@@ -91,7 +91,7 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
           <div className="bg-base-300 rounded-full h-2 overflow-hidden">
             <div className="loader-bar bg-accent h-full origin-left rounded-full"></div>
           </div>
-          <p className="text-sm text-base-content/50 mt-4">Loading...</p>
+          <p className="text-sm text-base-content/50 mt-4">Загрузка...</p>
         </div>
       </div>
     </div>

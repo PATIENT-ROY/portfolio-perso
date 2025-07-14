@@ -10,7 +10,6 @@ const ScrollToTop = ({ onScrollToTop }: ScrollToTopProps) => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Utiliser plusieurs méthodes pour détecter le scroll
       const scrollY =
         window.scrollY ||
         window.pageYOffset ||
@@ -26,29 +25,16 @@ const ScrollToTop = ({ onScrollToTop }: ScrollToTopProps) => {
     // Écouter le scroll normal
     window.addEventListener("scroll", toggleVisibility);
 
-    // Écouter aussi les événements de Locomotive Scroll
-    document.addEventListener("locomotive-scroll", toggleVisibility);
-
     // Vérifier immédiatement
     toggleVisibility();
 
     return () => {
       window.removeEventListener("scroll", toggleVisibility);
-      document.removeEventListener("locomotive-scroll", toggleVisibility);
     };
   }, []);
 
   const handleClick = () => {
-    // Essayer d'abord la fonction Locomotive Scroll
-    try {
-      onScrollToTop();
-    } catch {
-      // Fallback vers le scroll normal
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    }
+    onScrollToTop();
   };
 
   return (

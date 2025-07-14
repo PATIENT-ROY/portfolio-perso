@@ -33,7 +33,7 @@ const Experiences = () => {
 
   return (
     <div id="Experiences">
-      <Title title="Experiences" />
+      <Title title="Навыки" />
       <div className="flex flex-col-reverse md:flex-row justify-center items-center mt-4">
         <div
           ref={elementRef}
@@ -42,9 +42,9 @@ const Experiences = () => {
           {skills.map((skill) => (
             <div
               key={skill.id}
-              className="flex justify-center items-center flex-col hover:scale-110 transition-transform duration-200"
+              className="flex justify-center items-center flex-col transition-transform duration-200"
             >
-              <div className="w-24 h-24 p-2 rounded-full border-2 border-accent hover:rotate-360 transition-transform duration-600">
+              <div className="w-24 h-24 p-2 rounded-full border-2 border-accent transition-transform duration-600">
                 <img
                   src={skill.image}
                   alt={skill.name}

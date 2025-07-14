@@ -7,9 +7,9 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({
-  title = "RoyDev - Développeur Frontend React & TypeScript",
-  description = "Portfolio de RoyDev, développeur frontend spécialisé en React, TypeScript et Tailwind CSS. Découvrez mes projets et compétences en développement web.",
-  keywords = "développeur frontend, React, TypeScript, Tailwind CSS, portfolio, web development",
+  title = "Ройдев - Frontend-разработчик React & TypeScript",
+  description = "Портфолио Ройдева, frontend-разработчика, специализирующегося на React, TypeScript и Tailwind CSS. Откройте для себя мои проекты и навыки в веб-разработке.",
+  keywords = "frontend-разработчик, React, TypeScript, Tailwind CSS, портфолио, веб-разработка",
 }: SEOHeadProps) => {
   useEffect(() => {
     // Update document title
