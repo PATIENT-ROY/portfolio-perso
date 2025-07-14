@@ -1,8 +1,105 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Предотвращение мерцания при переключении темы */
+
 html {
     scroll-behavior: smooth;
+    /* Предотвращаем мерцание при загрузке темы */
+    color-scheme: light dark;
+}
+
+
+/* Оптимизация для быстрого переключения темы */
+
+[data-theme] {
+    transition: none;
+}
+
+[data-theme] * {
+    transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease;
+}
+
+
+/* Мгновенное переключение для критических элементов */
+
+[data-theme] .instant-theme-switch,
+[data-theme] .instant-theme-switch * {
+    transition: none !important;
+}
+
+
+/* Исключаем переходы для текста для более быстрого переключения */
+
+.text-transition-none,
+.text-transition-none * {
+    transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+
+/* Быстрое переключение для текста */
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+div,
+a,
+button,
+input,
+textarea,
+label {
+    transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+
+/* Мгновенное переключение цветов текста */
+
+.text-base-content,
+.text-base-content *,
+.text-accent,
+.text-accent *,
+.text-primary,
+.text-primary *,
+.text-secondary,
+.text-secondary *,
+.text-neutral,
+.text-neutral * {
+    transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+
+/* Оптимизация для кнопок и интерактивных элементов */
+
+.btn,
+.btn *,
+.input,
+.input *,
+.textarea,
+.textarea * {
+    transition: background-color 0.1s ease, border-color 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+
+/* Éviter les transitions sur les éléments qui ne doivent pas en avoir */
+
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}
+
+
+/* Optimisations pour les images et icônes */
+
+img,
+svg {
+    transition: none;
 }
 
 
@@ -66,12 +163,121 @@ img {
     }
 }
 
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slide-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes button-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes send-icon-slide {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(4px);
+    }
+}
+
 .animate-fade-in {
     animation: fadeIn 0.6s ease-out 0.4s both;
 }
 
 .animate-slide-down {
     animation: slideDown 0.3s ease-out both;
+}
+
+.animate-fade-in-error {
+    animation: fade-in 0.5s ease-out;
+}
+
+.animate-slide-in-up {
+    animation: slide-in-up 0.6s ease-out;
+}
+
+.animate-button-pulse {
+    animation: button-pulse 2s ease-in-out infinite;
+}
+
+.animate-send-icon {
+    transition: transform 0.3s ease;
+}
+
+.animate-send-icon:hover {
+    animation: send-icon-slide 0.3s ease forwards;
+}
+
+
+/* Loading spinner personnalisé */
+
+.custom-spinner {
+    position: relative;
+}
+
+.custom-spinner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.custom-spinner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: ping 1s ease-in-out infinite;
+    opacity: 0.3;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes ping {
+    75%,
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
 }
 
 

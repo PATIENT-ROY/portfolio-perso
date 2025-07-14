@@ -18,23 +18,23 @@ const projects = [
     id: 1,
     title: "Keystone Logistics Event",
     description:
-      "Modern event website for the logistics industry. I was responsible for the React frontend and API integration. Professional interface with event management system and registrations.",
+      "Современный сайт мероприятий для логистической отрасли. Я отвечал за React frontend и интеграцию API. Профессиональный интерфейс с системой управления мероприятиями и регистрациями.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
     demoLink: "https://keystone-logistics-event.vercel.app/",
     repoLink: "#",
     image: img1,
-    role: "Frontend Developer - Team",
+    role: "Frontend-разработчик - Команда",
     contributions: [
-      "User Interface Development",
-      "Event Registration System",
-      "API Integration",
+      "Разработка пользовательского интерфейса",
+      "Система регистрации мероприятий",
+      "Интеграция API",
     ],
   },
   {
     id: 7,
-    title: "Метрика - Interior Design Studio",
+    title: "Метрика - Студия дизайна интерьеров",
     description:
-      "Professional website for a Russian interior design studio. Modern interface with sections dedicated to services, residential project portfolio, and contact form.",
+      "Профессиональный сайт для российской студии дизайна интерьеров. Современный интерфейс с разделами, посвященными услугам, портфолио жилых проектов и контактной формой.",
     technologies: ["HTML", "CSS", "JavaScript"],
     demoLink:
       "https://sergeystarodub.github.io/metrica-site/#services-identifier",
@@ -43,9 +43,9 @@ const projects = [
   },
   {
     id: 3,
-    title: "Jekall Mobiles - Online phone shop",
+    title: "Jekall Mobiles - Интернет-магазин телефонов",
     description:
-      "Modern e-commerce site specializing in the sale of mobile phones. Intuitive user interface with product catalog, filtering system, shopping cart and order management.",
+      "Современный сайт электронной коммерции, специализирующийся на продаже мобильных телефонов. Интуитивный пользовательский интерфейс с каталогом продуктов, системой фильтрации, корзиной покупок и управлением заказами.",
     technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "GSAP"],
     demoLink: "https://jekall-mobiles.netlify.app/",
     repoLink: "https://github.com/PATIENT-ROY/Gallery-react.git",
@@ -53,9 +53,9 @@ const projects = [
   },
   {
     id: 4,
-    title: "Online shopping website",
+    title: "Сайт интернет-магазина",
     description:
-      "Simple and functional e-commerce website developed with HTML, CSS and vanilla JavaScript. Online store interface with product catalog and responsive design.",
+      "Простой и функциональный сайт электронной коммерции, разработанный с использованием HTML, CSS и vanilla JavaScript. Интерфейс онлайн-магазина с каталогом продуктов и адаптивным дизайном.",
     technologies: ["HTML", "CSS", "JavaScript"],
     demoLink: "https://patient-roy.github.io/market1/",
     repoLink: "https://github.com/PATIENT-ROY/market1.git",
@@ -65,23 +65,23 @@ const projects = [
     id: 5,
     title: "Books Academy",
     description:
-      "Educational platform website for online learning and course management. I was responsible for the React frontend development. Modern interface with user authentication.",
+      "Сайт образовательной платформы для онлайн-обучения и управления курсами. Я отвечал за разработку React frontend. Современный интерфейс с аутентификацией пользователей.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "API Integration"],
     demoLink: "https://books-academy.ru/welcome",
     repoLink: "https://github.com/PATIENT-ROY/todo-1.git",
     image: img5,
-    role: "Frontend Developer - Team",
+    role: "Frontend-разработчик - Команда",
     contributions: [
-      "User Interface Development",
-      "Course Catalog Interface",
-      "User Authentication UI",
+      "Разработка пользовательского интерфейса",
+      "Интерфейс каталога курсов",
+      "UI аутентификации пользователей",
     ],
   },
   {
     id: 6,
-    title: "Tourist Places Search",
+    title: "Поиск туристических мест",
     description:
-      "Interactive website for discovering and searching tourist destinations. Users can browse locations, view details, and find travel information.",
+      "Интерактивный сайт для поиска и открытия туристических направлений. Пользователи могут просматривать места, просматривать детали и находить туристическую информацию.",
     technologies: ["React", "CSS"],
     demoLink: "#",
     repoLink: "https://github.com/PATIENT-ROY/Gallery-react.git",
@@ -89,9 +89,9 @@ const projects = [
   },
   {
     id: 2,
-    title: "Portfolio interactif",
+    title: "Интерактивное портфолио",
     description:
-      "Interactive portfolio showcasing my work and skills. Built with React and Tailwind CSS for a modern and responsive design.",
+      "Интерактивное портфолио, демонстрирующее мою работу и навыки. Построено с использованием React и Tailwind CSS для современного и отзывчивого дизайна.",
     technologies: ["React", "Tailwind CSS"],
     demoLink: "#",
     repoLink: "https://github.com/PATIENT-ROY/Portfolio-interactif.git",
@@ -101,7 +101,7 @@ const projects = [
     id: 8,
     title: "Crypto Watch Tower",
     description:
-      "Real-time cryptocurrency tracking and monitoring platform. Users can view live prices, market trends, and portfolio management.",
+      "Платформа для отслеживания и мониторинга криптовалют в реальном времени. Пользователи могут просматривать живые цены, рыночные тренды и управление портфелем.",
     technologies: ["React", "SASS", "Axios"],
     demoLink: "#",
     repoLink: "https://github.com/PATIENT-ROY/Crypto_watch_tower_app.git",
@@ -131,7 +131,7 @@ const Projects = () => {
 
   return (
     <div className="mt-10" id="Projects">
-      <Title title="My Projects" />
+      <Title title="Мои проекты" />
 
       <div className="flex justify-center">
         <div
@@ -176,7 +176,7 @@ const Projects = () => {
                           <div class="flex items-center justify-center h-full text-center p-4">
                             <div>
                               <div class="text-lg font-bold mb-2">${project.title}</div>
-                              <div class="text-xs text-base-content/50">Image non disponible</div>
+                              <div class="text-xs text-base-content/50">Изображение недоступно</div>
                             </div>
                           </div>
                         `;
@@ -199,7 +199,7 @@ const Projects = () => {
                       </span>
                       {project.contributions && (
                         <div className="mt-1 text-xs text-base-content/70">
-                          <strong>Contributions :</strong>{" "}
+                          <strong>Вклад:</strong>{" "}
                           {project.contributions.join(", ")}
                         </div>
                       )}

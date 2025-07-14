@@ -39,7 +39,7 @@ const Home = ({ onNavigate }: HomeProps) => {
           data-scroll
           data-scroll-delay="0.1"
         >
-          Hello, <br /> I'm <span className="text-accent">Roydev</span>
+          Привет, <br /> я <span className="text-accent">Ройдев</span>
         </h1>
 
         <p
@@ -49,10 +49,11 @@ const Home = ({ onNavigate }: HomeProps) => {
           data-scroll
           data-scroll-delay="0.2"
         >
-          I am a frontend developer
+          Я frontend-разработчик
           <br />
-          using React and typescript.
-          <br /> Contact me if you need my services ( a website and a web App).
+          использующий React и TypeScript.
+          <br /> Свяжитесь со мной, если нужны мои услуги (сайт и
+          веб-приложение).
         </p>
         <button
           onClick={() => onNavigate("Contact")}
@@ -63,7 +64,7 @@ const Home = ({ onNavigate }: HomeProps) => {
           data-scroll-delay="0.3"
         >
           <Mail className="w-5 h-5" />
-          Contact-me
+          Связаться со мной
         </button>
       </div>
 
@@ -79,7 +80,7 @@ const Home = ({ onNavigate }: HomeProps) => {
         <img
           src={img}
           alt=""
-          className="w-96 h-96 object-cover border-8 border-accent shadow-xl hover:scale-105 hover:rotate-2 transition-all duration-300"
+          className="w-96 h-96 object-cover border-8 border-accent shadow-xl transition-all duration-300"
           style={{
             borderRadius: "30% 70% 70% 30% / 67% 62% 38% 33%",
           }}
