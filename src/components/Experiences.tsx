@@ -8,7 +8,6 @@ import imgHTML from "../assets/techno/html.png";
 import imgGithub from "../assets/techno/github.png";
 import imgTYPE from "../assets/techno/typescript.svg";
 import imgTAILWIND from "../assets/techno/tailwind.png";
-import imgNODE from "../assets/techno/node-js.png";
 import imgNEXT from "../assets/techno/Next.png";
 
 const skills = [
@@ -20,7 +19,6 @@ const skills = [
   { id: 7, name: "TypeScript", image: imgTYPE },
   { id: 8, name: "github", image: imgGithub },
   { id: 9, name: "Next.js", image: imgNEXT },
-  { id: 10, name: "Node.js", image: imgNODE },
 ];
 
 const Experiences = () => {
