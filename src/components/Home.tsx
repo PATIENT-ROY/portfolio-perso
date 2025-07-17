@@ -39,7 +39,7 @@ const Home = ({ onNavigate }: HomeProps) => {
           data-scroll
           data-scroll-delay="0.1"
         >
-          Привет, <br /> я <span className="text-accent">Ройдев</span>
+          Привет, <br /> я <span className="text-accent">Рой</span>
         </h1>
 
         <p
