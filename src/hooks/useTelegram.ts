@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { TELEGRAM_CONFIG, TELEGRAM_API_URL } from '../config/telegram';
+import { TELEGRAM_CONFIG, getTelegramApiUrl } from '../config/telegram';
 
 interface TelegramMessage {
   name: string;
@@ -42,7 +42,7 @@ ${message.message}
 Отправлено с сайта портфолио
       `.trim();
 
-      const response = await fetch(TELEGRAM_API_URL, {
+      const response = await fetch(getTelegramApiUrl(), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
