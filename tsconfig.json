@@ -1,7 +1,26 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ]
+  "extends": "./portfolio/tsconfig.app.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "typeRoots": ["./portfolio/node_modules/@types", "./node_modules/@types"],
+    "types": ["react", "react-dom"],
+    "paths": {
+      "react": ["./portfolio/node_modules/@types/react"],
+      "react/*": ["./portfolio/node_modules/@types/react/*"],
+      "react-dom": ["./portfolio/node_modules/@types/react-dom"],
+      "react-dom/*": ["./portfolio/node_modules/@types/react-dom/*"],
+      "react-dom/client": [
+        "./portfolio/node_modules/@types/react-dom/client",
+        "./portfolio/node_modules/@types/react-dom/client.d.ts"
+      ],
+      "react/jsx-runtime": ["./portfolio/node_modules/@types/react/jsx-runtime"],
+      "*": ["./portfolio/node_modules/*", "./node_modules/*"]
+    },
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
+  },
+  "include": ["src", "src/**/*"]
 }

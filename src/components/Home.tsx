@@ -42,19 +42,29 @@ const Home = ({ onNavigate }: HomeProps) => {
           Привет, <br /> я <span className="text-accent">Рой</span>
         </h1>
 
-        <p
+        <div
           className={`my-4 text-md text-center md:text-left transition-all duration-800 ease-out delay-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           data-scroll
           data-scroll-delay="0.2"
         >
-          Я frontend-разработчик
-          <br />
-          использующий React и TypeScript.
-          <br /> Свяжитесь со мной, если нужны мои услуги (сайт и
-          веб-приложение).
-        </p>
+          <p className="text-xl font-semibold mb-2">Frontend-разработчик</p>
+          <p className="mb-3">
+            Создаю современные сайты и веб-приложения, которые решают ваши
+            задачи.
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+            Моя специализация — удобные и эффективные онлайн-продукты: от
+            лаконичных сайтов-визиток и цепких посадочных страниц (Landing Page)
+            до сложных веб-приложений, которые автоматизируют бизнес-процессы.
+          </p>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            Использую современные технологии, чтобы ваш проект был быстрым,
+            безопасным и работал без сбоев.
+          </p>
+        </div>
+
         <button
           onClick={() => onNavigate("Contact")}
           className={`btn btn-accent md:w-fit hover:scale-105 transition-all duration-800 ease-out delay-900 ${
@@ -79,8 +89,8 @@ const Home = ({ onNavigate }: HomeProps) => {
       >
         <img
           src={img}
-          alt=""
-          className="w-96 h-96 object-cover border-8 border-accent shadow-xl transition-all duration-300"
+          alt="Рой - Frontend разработчик"
+          className="w-80 h-80 md:w-[28rem] md:h-[28rem] object-cover border-8 border-accent shadow-xl transition-all duration-300"
           style={{
             borderRadius: "30% 70% 70% 30% / 67% 62% 38% 33%",
           }}
