@@ -50,7 +50,7 @@ const Home = ({ onNavigate }: HomeProps) => {
         </p>
 
         <div
-          className={`my-4 text-md text-center md:text-left transition-all duration-800 ease-out delay-700 ${
+          className={`my-3 text-md text-center md:text-left transition-all duration-800 ease-out delay-700 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
           data-scroll
@@ -73,7 +73,7 @@ const Home = ({ onNavigate }: HomeProps) => {
             </span>
           </p>
 
-          <p className="text-base md:text-lg leading-relaxed text-base-content/90 mb-3">
+          <p className="text-sm md:text-base leading-relaxed text-base-content/90 mb-2">
             Создаю{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               современные сайты и веб-приложения
@@ -81,7 +81,7 @@ const Home = ({ onNavigate }: HomeProps) => {
             , которые помогают бизнесу расти и пользователям получать
             удовольствие от взаимодействия.
           </p>
-          <p className="text-sm md:text-base text-base-content/90 leading-relaxed mb-3">
+          <p className="text-sm md:text-base text-base-content/90 leading-relaxed mb-2">
             Моя специализация —{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
               удобные, быстрые и эффективные онлайн-решения
@@ -104,9 +104,9 @@ const Home = ({ onNavigate }: HomeProps) => {
             </span>
             .
           </p>
-          <div className="mt-5 text-sm md:text-base text-base-content/90">
-            <p className="font-semibold mb-2">🔧 Что я делаю</p>
-            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-1 text-center md:text-left leading-relaxed">
+          <div className="mt-2 text-sm md:text-base text-base-content/90">
+            <p className="font-semibold mb-1.5">🔧 Что я делаю</p>
+            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-0.5 text-center md:text-left leading-snug">
               <li>🌐 Разработка сайтов любой сложности</li>
               <li>⚙️ Создание веб-приложений</li>
               <li>🚀 Landing Page и промо-страницы</li>
