@@ -8,22 +8,77 @@ const aboutSections = [
   {
     id: 1,
     title: "Frontend-разработчик",
-    description:
-      "Увлеченный frontend-разработчик с опытом работы с React, TypeScript и современными веб-технологиями. Специализируюсь на создании отзывчивых, удобных веб-приложений с чистым кодом и оптимальной производительностью. Всегда готов изучать новые технологии и лучшие практики для создания исключительного пользовательского опыта.",
+    description: (
+      <>
+        Увлеченный frontend-разработчик с опытом работы с{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          React
+        </span>
+        ,{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          TypeScript
+        </span>{" "}
+        и современными
+        веб-технологиями. Специализируюсь на создании отзывчивых, удобных
+        веб-приложений с чистым кодом и оптимальной производительностью. Всегда
+        готов изучать новые технологии и лучшие практики для создания
+        исключительного пользовательского опыта.
+      </>
+    ),
     icon: <LetterText className="text-accent scale-150" />,
   },
   {
     id: 2,
     title: "Технологии и инструменты",
-    description:
-      "Владею React, TypeScript, Next.js, Tailwind CSS и современным JavaScript. Опыт работы с Git, адаптивным дизайном, интеграцией API и платформами развертывания как Vercel. Стремлюсь писать чистый, поддерживаемый код и следовать лучшим практикам отрасли.",
+    description: (
+      <>
+        Владею{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          React
+        </span>
+        ,{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          TypeScript
+        </span>
+        ,{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          Next.js
+        </span>
+        ,{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          Tailwind CSS
+        </span>{" "}
+        и современным JavaScript. Опыт работы с{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          Git
+        </span>
+        ,{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          адаптивным дизайном
+        </span>
+        , интеграцией{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          REST API и внешних сервисов
+        </span>{" "}
+        и платформами развертывания как{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          Vercel
+        </span>
+        . Стремлюсь писать{" "}
+        <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+          чистый, поддерживаемый код
+        </span>{" "}
+        и
+        следовать лучшим практикам отрасли.
+      </>
+    ),
     icon: <Code className="text-accent scale-150" />,
   },
   {
     id: 3,
     title: "Подход и методология",
     description:
-      "Фокус на оптимизации производительности, доступности и пользовательском опыте. Сильные навыки решения проблем с вниманием к деталям. Командный игрок, который ценит качество кода и непрерывное обучение в динамичной среде разработки.",
+      "Ориентир на производительность, доступность и безупречный пользовательский опыт. Обладаю сильными аналитическими навыками и вниманием к деталям. Работаю в команде, где качество кода, чистая архитектура и постоянное развитие — ключевые ценности. Сочетаю экспертные технические знания с современными AI-инструментами, чтобы ускорять и улучшать процесс разработки.",
     icon: <Zap className="text-accent scale-150" />,
   },
 ];
