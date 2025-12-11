@@ -9,7 +9,6 @@ import img2 from "../assets/projects/2.jpg";
 import img3 from "../assets/projects/3.jpg";
 import img4 from "../assets/projects/4.jpg";
 import img5 from "../assets/projects/5.jpg";
-import img6 from "../assets/projects/6.jpg";
 import img8 from "../assets/projects/8.jpg";
 import img10 from "../assets/projects/10.png";
 import img77 from "../assets/projects/77.png";
