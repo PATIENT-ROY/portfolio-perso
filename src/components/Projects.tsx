@@ -12,6 +12,7 @@ import img5 from "../assets/projects/5.jpg";
 import img8 from "../assets/projects/8.jpg";
 import img10 from "../assets/projects/10.png";
 import img77 from "../assets/projects/77.png";
+import img66 from "../assets/projects/66.png";
 
 const projects = [
   {
@@ -120,6 +121,16 @@ const projects = [
     demoLink: "#",
     repoLink: "https://github.com/PATIENT-ROY/Crypto_watch_tower_app.git",
     image: img3,
+  },
+  {
+    id: 9,
+    title: "TravelDream — туры и путешествия",
+    description:
+      "Лендинг туристического агентства с популярными направлениями, услугами, контактами и реквизитами. Фокус на удобстве бронирования и поддержке 24/7.",
+    technologies: ["HTML", "CSS", "JavaScript"],
+    demoLink: "https://irina-tour.netlify.app/",
+    repoLink: "#",
+    image: img66,
   },
 ];
 
