@@ -69,7 +69,7 @@ const Home = ({ onNavigate }: HomeProps) => {
                 isVisible ? "border-opacity-100" : "border-opacity-0"
               }`}
             >
-              Frontend-разработчик
+            Frontend-разработчик
             </span>
           </p>
 

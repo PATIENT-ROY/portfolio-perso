@@ -10,8 +10,9 @@ import img3 from "../assets/projects/3.jpg";
 import img4 from "../assets/projects/4.jpg";
 import img5 from "../assets/projects/5.jpg";
 import img6 from "../assets/projects/6.jpg";
-import img7 from "../assets/projects/7.jpg";
 import img8 from "../assets/projects/8.jpg";
+import img10 from "../assets/projects/10.png";
+import img77 from "../assets/projects/77.png";
 
 const projects = [
   {
@@ -32,14 +33,13 @@ const projects = [
   },
   {
     id: 7,
-    title: "Метрика - Студия дизайна интерьеров",
+    title: "FulfillPro — фулфилмент для маркетплейсов",
     description:
-      "Профессиональный сайт для российской студии дизайна интерьеров. Современный интерфейс с разделами, посвященными услугам, портфолио жилых проектов и контактной формой.",
+      "Лендинг фулфилмент-сервиса полного цикла для селлеров маркетплейсов: приемка, упаковка и отгрузка с преимуществами и тарифами.",
     technologies: ["HTML", "CSS", "JavaScript"],
-    demoLink:
-      "https://sergeystarodub.github.io/metrica-site/#services-identifier",
-    repoLink: "https://github.com/PATIENT-ROY/LandingPage1.git",
-    image: img7,
+    demoLink: "https://patient-roy.github.io/FulfillPro/",
+    repoLink: "#",
+    image: img77,
   },
   {
     id: 3,
@@ -79,13 +79,28 @@ const projects = [
   },
   {
     id: 6,
-    title: "Поиск туристических мест",
+    title: "AdaptEd Russia — AI платформа для адаптации студентов",
     description:
-      "Интерактивный сайт для поиска и открытия туристических направлений. Пользователи могут просматривать места, просматривать детали и находить туристическую информацию.",
-    technologies: ["React", "CSS"],
-    demoLink: "#",
-    repoLink: "https://github.com/PATIENT-ROY/Gallery-react.git",
-    image: img6,
+      "Комплексная AI-платформа для адаптации иностранных студентов в России: объединяет контент, инструменты и ИИ, чтобы помочь студентам интегрироваться в образовательную систему и общество.",
+    technologies: [
+      "Next.js 14",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "PostgreSQL",
+      "Prisma",
+      "DeepSeek AI",
+      "OpenAI API",
+      "Tesseract.js",
+      "Vercel",
+      "Railway",
+      "AWS",
+    ],
+    demoLink: "https://adaptedrussia.netlify.app",
+    repoLink: "#",
+    image: img10,
   },
   {
     id: 2,
@@ -194,7 +209,7 @@ const Projects = () => {
 
                   {project.role && (
                     <div className="mb-3 text-center sm:text-left">
-                      <span className="badge badge-primary badge-sm mr-2">
+                      <span className="badge badge-sm mr-2 bg-accent text-base-100">
                         {project.role}
                       </span>
                       {project.contributions && (
