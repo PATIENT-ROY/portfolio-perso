@@ -1,6 +1,3 @@
-import Title from "./Title";
-import { useEffect } from "react";
-import { useGSAP } from "../hooks/useGSAP";
 import imgCSS from "../assets/techno/css.png";
 import imgJS from "../assets/techno/js.png";
 import imgREACT from "../assets/techno/react.png";
@@ -17,44 +14,32 @@ const skills = [
   { id: 4, name: "React", image: imgREACT },
   { id: 6, name: "Tailwind CSS", image: imgTAILWIND },
   { id: 7, name: "TypeScript", image: imgTYPE },
-  { id: 8, name: "github", image: imgGithub },
+  { id: 8, name: "GitHub", image: imgGithub },
   { id: 9, name: "Next.js", image: imgNEXT },
 ];
 
 const Experiences = () => {
-  const { elementRef, staggerChildren } = useGSAP();
-
-  useEffect(() => {
-    // Animation stagger pour les compétences
-    staggerChildren(0.1);
-  }, [staggerChildren]);
-
   return (
-    <div id="Experiences">
-      <Title title="Навыки" />
-      <div className="flex flex-col-reverse md:flex-row justify-center items-center mt-4">
-        <div
-          ref={elementRef}
-          className="flex flex-wrap gap-2 justify-center items-center md:w-1/2 mt-4 md:mt-0"
-        >
-          {skills.map((skill) => (
-            <div
-              key={skill.id}
-              className="flex justify-center items-center flex-col transition-transform duration-200"
-            >
-              <div className="w-24 h-24 p-2 rounded-full border-2 border-accent transition-transform duration-600">
-                <img
-                  src={skill.image}
-                  alt={skill.name}
-                  className="object-cover rounded-full h-full w-full"
-                />
-              </div>
-              <span className="mt-2 text-sm">{skill.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <section
+      id="Experiences"
+      className="scroll-mt-24 border-t border-base-content/10 py-16 sm:py-20"
+    >
+      <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+        Навыки
+      </h2>
+      <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
+        {skills.map((skill) => (
+          <li key={skill.id} className="flex items-center gap-3">
+            <img
+              src={skill.image}
+              alt=""
+              className="h-7 w-7 object-contain"
+            />
+            <span className="text-sm">{skill.name}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 

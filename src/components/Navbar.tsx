@@ -1,4 +1,4 @@
-import { Container, Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "../contexts/ThemeContext";
 
@@ -6,128 +6,91 @@ interface NavbarProps {
   onNavigate: (sectionId: string) => void;
 }
 
+const links = [
+  { id: "Home", label: "Главная" },
+  { id: "About", label: "Обо мне" },
+  { id: "Experiences", label: "Навыки" },
+  { id: "Projects", label: "Работы" },
+  { id: "Contact", label: "Контакты" },
+];
+
 const Navbar = ({ onNavigate }: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
+  const handleNavigation = (sectionId: string) => {
+    onNavigate(sectionId);
     setIsMenuOpen(false);
   };
 
-  const handleNavigation = (sectionId: string) => {
-    onNavigate(sectionId);
-    closeMenu();
-  };
-
   return (
-    <div className="flex justify-center md:justify-between items-center p-4 relative">
-      <button
-        onClick={() => handleNavigation("Home")}
-        className="flex items-center font-bold text-3xl md:text-xl cursor-pointer hover:opacity-80 transition-opacity"
-      >
-        <Container className="mr-2" />
-        ROY
-        <span className="text-accent">DEV</span>
-      </button>
+    <header className="sticky top-0 z-40 border-b border-base-content/10 bg-base-100/90 backdrop-blur-md">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-5 sm:px-8">
+        <button
+          onClick={() => handleNavigation("Home")}
+          className="font-display text-sm font-medium"
+        >
+          Ройдев
+        </button>
 
-      {/* Desktop Menu */}
-      <ul className="hidden md:flex space-x-4">
-        <li>
-          <button
-            onClick={() => handleNavigation("Home")}
-            className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
-          >
-            Главная
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => handleNavigation("About")}
-            className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
-          >
-            О нас
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => handleNavigation("Experiences")}
-            className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
-          >
-            Навыки
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => handleNavigation("Projects")}
-            className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
-          >
-            Проекты
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => handleNavigation("Contact")}
-            className="btn btn-sm btn-ghost hover:bg-accent hover:text-accent-content transition-colors"
-          >
-            Контакты
-          </button>
-        </li>
-      </ul>
-
-      {/* Theme Toggle Button */}
-      <button
-        className="btn btn-ghost btn-sm mr-2"
-        onClick={toggleTheme}
-        aria-label="Toggle theme"
-      >
-        {theme === "light" ? (
-          <Moon className="w-5 h-5" />
-        ) : (
-          <Sun className="w-5 h-5" />
-        )}
-      </button>
-
-      {/* Mobile Menu Button */}
-      <button
-        className="md:hidden btn btn-ghost btn-sm"
-        onClick={toggleMenu}
-        aria-label="Toggle menu"
-      >
-        {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-      </button>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="absolute top-full left-0 right-0 bg-base-100 shadow-lg border-t border-base-300 md:hidden z-50 animate-slide-down">
-          <ul className="flex flex-col space-y-2 p-4">
-            {[
-              { id: "Home", label: "Главная" },
-              { id: "About", label: "О нас" },
-              { id: "Experiences", label: "Навыки" },
-              { id: "Projects", label: "Проекты" },
-              { id: "Contact", label: "Контакты" },
-            ].map((item, index) => (
-              <li
-                key={item.id}
-                className="animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
+        <nav className="hidden lg:ml-auto lg:block" aria-label="Разделы">
+          <ul className="flex items-center gap-1">
+            {links.map((item) => (
+              <li key={item.id}>
                 <button
                   onClick={() => handleNavigation(item.id)}
-                  className="block w-full text-left p-3 rounded-lg hover:bg-accent hover:text-accent-content transition-all duration-300 hover:translate-x-2"
+                  className="px-3 py-2 text-sm text-base-content/75 hover:text-base-content"
                 >
                   {item.label}
                 </button>
               </li>
             ))}
           </ul>
+        </nav>
+
+        <div className="flex items-center gap-1">
+          <button
+            className="flex h-11 w-11 items-center justify-center"
+            onClick={toggleTheme}
+            aria-label="Сменить тему"
+          >
+            {theme === "light" ? (
+              <Moon className="h-5 w-5" />
+            ) : (
+              <Sun className="h-5 w-5" />
+            )}
+          </button>
+          <button
+            className="flex h-11 w-11 items-center justify-center lg:hidden"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-label={isMenuOpen ? "Закрыть меню" : "Открыть меню"}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
+      </div>
+
+      {isMenuOpen && (
+        <nav
+          className="border-t border-base-content/10 bg-base-100 lg:hidden"
+          aria-label="Разделы"
+        >
+          <ul className="mx-auto max-w-6xl px-3 py-2 sm:px-6">
+            {links.map((item) => (
+              <li key={item.id}>
+                <button
+                  onClick={() => handleNavigation(item.id)}
+                  className="block w-full px-2 py-3 text-left text-base"
+                >
+                  {item.label}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
-    </div>
+    </header>
   );
 };
 

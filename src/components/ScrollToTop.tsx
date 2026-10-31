@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ChevronUp } from "lucide-react";
 
 interface ScrollToTopProps {
@@ -10,45 +10,24 @@ const ScrollToTop = ({ onScrollToTop }: ScrollToTopProps) => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      const scrollY =
-        window.scrollY ||
-        window.pageYOffset ||
-        document.documentElement.scrollTop;
-
-      if (scrollY > 300) {
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
-      }
+      setIsVisible(window.scrollY > 400);
     };
 
-    // Écouter le scroll normal
-    window.addEventListener("scroll", toggleVisibility);
-
-    // Vérifier immédiatement
     toggleVisibility();
-
-    return () => {
-      window.removeEventListener("scroll", toggleVisibility);
-    };
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const handleClick = () => {
-    onScrollToTop();
-  };
+  if (!isVisible) return null;
 
   return (
-    <>
-      {isVisible && (
-        <button
-          onClick={handleClick}
-          className="fixed bottom-6 right-6 z-50 btn btn-accent btn-circle shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300"
-          aria-label="Scroll to top"
-        >
-          <ChevronUp className="w-5 h-5" />
-        </button>
-      )}
-    </>
+    <button
+      onClick={onScrollToTop}
+      className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center bg-primary text-primary-content"
+      aria-label="Наверх"
+    >
+      <ChevronUp className="h-5 w-5" />
+    </button>
   );
 };
 

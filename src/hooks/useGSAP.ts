@@ -5,10 +5,19 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Enregistrer ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 export const useGSAP = () => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   const fadeInUp = (delay: number = 0) => {
+    if (!elementRef.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(elementRef.current, { opacity: 1, x: 0, y: 0 });
+      return;
+    }
     if (elementRef.current) {
       gsap.fromTo(
         elementRef.current,
@@ -34,12 +43,17 @@ export const useGSAP = () => {
   };
 
   const fadeInLeft = (delay: number = 0) => {
+    if (!elementRef.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(elementRef.current, { opacity: 1, x: 0, y: 0 });
+      return;
+    }
     if (elementRef.current) {
       gsap.fromTo(
         elementRef.current,
         {
           opacity: 0,
-          x: -50,
+          x: -16,
         },
         {
           opacity: 1,
@@ -59,12 +73,17 @@ export const useGSAP = () => {
   };
 
   const fadeInRight = (delay: number = 0) => {
+    if (!elementRef.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(elementRef.current, { opacity: 1, x: 0, y: 0 });
+      return;
+    }
     if (elementRef.current) {
       gsap.fromTo(
         elementRef.current,
         {
           opacity: 0,
-          x: 50,
+          x: 16,
         },
         {
           opacity: 1,
@@ -84,6 +103,11 @@ export const useGSAP = () => {
   };
 
   const scaleIn = (delay: number = 0) => {
+    if (!elementRef.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(elementRef.current, { opacity: 1, scale: 1 });
+      return;
+    }
     if (elementRef.current) {
       gsap.fromTo(
         elementRef.current,
@@ -109,6 +133,11 @@ export const useGSAP = () => {
   };
 
   const staggerChildren = (stagger: number = 0.1) => {
+    if (!elementRef.current) return;
+    if (prefersReducedMotion()) {
+      gsap.set(elementRef.current.children, { opacity: 1, y: 0 });
+      return;
+    }
     if (elementRef.current) {
       const children = elementRef.current.children;
       gsap.fromTo(

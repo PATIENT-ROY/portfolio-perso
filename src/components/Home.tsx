@@ -1,5 +1,3 @@
-import { Mail } from "lucide-react";
-import { useEffect, useState } from "react";
 import img from "../assets/3.png";
 
 interface HomeProps {
@@ -7,147 +5,55 @@ interface HomeProps {
 }
 
 const Home = ({ onNavigate }: HomeProps) => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Animation d'entrée après un délai
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div
+    <section
       id="Home"
-      className={`flex flex-col-reverse md:flex-row justify-center items-center md:my-32 my-10 transition-all duration-1000 ease-out ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20"
-      }`}
+      className="grid items-center gap-12 scroll-mt-24 py-12 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24"
     >
-      <div
-        className={`flex flex-col transition-all duration-1000 ease-out delay-300 ${
-          isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-20"
-        }`}
-        data-scroll
-        data-scroll-speed="2"
-      >
-        <h1
-          className={`text-5xl md:text-6xl font-bold text-center md:text-left mt-4 md:mt-0 transition-all duration-700 ease-out delay-200 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          data-scroll
-          data-scroll-delay="0.1"
-        >
-          Привет, <br /> я <span className="text-accent">Рой</span>
+      <div className="rise">
+        <h1 className="font-display text-[clamp(4.25rem,16vw,7.5rem)] font-medium leading-[0.9] tracking-[-0.04em]">
+          Рой
         </h1>
-        <p
-          className={`text-base md:text-lg text-base-content/70 mt-3 md:mt-4 text-center md:text-left leading-relaxed transition-all duration-700 ease-out delay-300 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          Создаю интерфейсы, которые вдохновляют.
+        <p className="mt-6 max-w-md text-lg leading-relaxed text-base-content/75 sm:text-xl">
+          Делаю сайты и веб-приложения, которыми пользуются. React,
+          TypeScript, от лендинга до сервиса.
         </p>
-
-        <div
-          className={`my-3 text-md text-center md:text-left transition-all duration-800 ease-out delay-700 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
-          data-scroll
-          data-scroll-delay="0.2"
-        >
-          <p
-            className={`text-xl md:text-2xl font-semibold text-base-content mb-3 inline-flex items-center gap-2 transition-all duration-700 ease-out delay-400 ${
-              isVisible
-                ? "opacity-100 translate-x-0"
-                : "opacity-0 -translate-x-6"
-            }`}
+        <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <button
+            onClick={() => onNavigate("Contact")}
+            className="bg-secondary px-5 py-3 text-sm font-medium text-secondary-content"
           >
-            💻
-            <span
-              className={`inline-block border-b-2 border-accent pb-1 transition-all duration-700 ease-out ${
-                isVisible ? "border-opacity-100" : "border-opacity-0"
-              }`}
-            >
-            Frontend-разработчик
-            </span>
-          </p>
-
-          <p className="text-sm md:text-base leading-relaxed text-base-content/90 mb-2">
-            Создаю{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              современные сайты и веб-приложения
-            </span>
-            , которые помогают бизнесу расти и пользователям получать
-            удовольствие от взаимодействия.
-          </p>
-          <p className="text-sm md:text-base text-base-content/90 leading-relaxed mb-2">
-            Моя специализация —{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              удобные, быстрые и эффективные онлайн-решения
-            </span>
-            : от минималистичных сайтов-визиток и{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              продающих Landing Page
-            </span>{" "}
-            до{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              полноценных веб-приложений
-            </span>
-            , автоматизирующих бизнес-процессы.
-          </p>
-          <p className="text-sm md:text-base text-base-content/90 leading-relaxed">
-            Использую современные технологии и проверенные практики, чтобы ваш
-            проект был{" "}
-            <span className="bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              быстрым, безопасным и стабильным
-            </span>
-            .
-          </p>
-          <div className="mt-2 text-sm md:text-base text-base-content/90">
-            <p className="font-semibold mb-1.5">🔧 Что я делаю</p>
-            <ul className="list-disc list-inside md:list-outside md:pl-5 space-y-0.5 text-center md:text-left leading-snug">
-              <li>🌐 Разработка сайтов любой сложности</li>
-              <li>⚙️ Создание веб-приложений</li>
-              <li>🚀 Landing Page и промо-страницы</li>
-              <li>🔗 Подключение и настройка внешних сервисов</li>
-              <li>📊 Интеграция с рекламными и аналитическими системами</li>
-            </ul>
-          </div>
+            Обсудить проект
+          </button>
+          <button
+            onClick={() => onNavigate("Projects")}
+            className="text-sm underline decoration-base-content/30 underline-offset-4 hover:decoration-base-content"
+          >
+            Смотреть работы
+          </button>
         </div>
-
-        <button
-          onClick={() => onNavigate("Contact")}
-          className={`bg-teal-400 hover:bg-teal-500 text-black font-medium py-3 px-5 rounded-lg transition-all flex items-center gap-2 md:w-fit shadow-lg duration-700 ease-out delay-600 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
-          }`}
-          data-scroll
-          data-scroll-delay="0.3"
-        >
-          <Mail className="w-5 h-5" />
-          Связаться со мной
-        </button>
+        <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 text-sm">
+          <div>
+            <dt className="text-base-content/50">Город</dt>
+            <dd className="mt-1">Екатеринбург</dd>
+          </div>
+          <div>
+            <dt className="text-base-content/50">Формат</dt>
+            <dd className="mt-1">Удалённо</dd>
+          </div>
+          <div>
+            <dt className="text-base-content/50">Стек</dt>
+            <dd className="mt-1">React</dd>
+          </div>
+        </dl>
       </div>
 
-      <div
-        className={`md:ml-60 transition-all duration-1000 ease-out delay-500 ${
-          isVisible
-            ? "opacity-100 translate-x-0 scale-100"
-            : "opacity-0 translate-x-20 scale-95"
-        }`}
-        data-scroll
-        data-scroll-speed="-1"
-      >
-        <img
-          src={img}
-          alt="Рой - Frontend разработчик"
-          className="w-[22rem] h-[26rem] md:w-[36rem] md:h-[38rem] object-cover border-8 border-accent shadow-xl transition-all duration-300"
-          style={{
-            borderRadius: "42% 58% 60% 40% / 50% 55% 45% 55%",
-          }}
-        />
-      </div>
-    </div>
+      <img
+        src={img}
+        alt="Рабочий стол: ноутбук с кодом"
+        className="aspect-[4/5] w-full max-w-md justify-self-center object-cover lg:max-w-none lg:justify-self-end"
+      />
+    </section>
   );
 };
 

@@ -1,15 +1,5 @@
-import { useState, useEffect, useMemo } from "react";
-import {
-  Mail,
-  Send,
-  MapPin,
-  MessageCircle,
-  Monitor,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
-import Title from "./Title";
-import { useGSAP } from "../hooks/useGSAP";
+import { useEffect, useMemo, useState } from "react";
+import { Mail, MapPin, MessageCircle, Monitor } from "lucide-react";
 
 const Contact = () => {
   type ContactMethod = "email" | "telegram";
@@ -34,22 +24,17 @@ const Contact = () => {
     "idle" | "success" | "error"
   >("idle");
 
-  // Créer des références séparées pour éviter les conflits
-  const { elementRef: contactInfoRef, staggerChildren } = useGSAP();
-  const { elementRef: formRef, fadeInRight } = useGSAP();
-
-  // Optimisation : contactInfo avec useMemo
   const contactInfo = useMemo(
     () => [
       {
-        icon: <Mail className="w-6 h-6" />,
-        title: "Email",
-        value: "contact@roydev.ru",
-        link: "mailto:contact@roydev.ru",
+        icon: <Mail className="h-5 w-5" aria-hidden="true" />,
+        title: "Почта",
+        value: "contact-me-roydev@inbox.ru",
+        link: "mailto:contact-me-roydev@inbox.ru",
         isLink: true,
       },
       {
-        icon: <MessageCircle className="w-6 h-6" />,
+        icon: <MessageCircle className="h-5 w-5" aria-hidden="true" />,
         title: "Telegram",
         value: "@PapyRoy",
         link: "https://t.me/PapyRoy",
@@ -57,7 +42,7 @@ const Contact = () => {
       },
       {
         icon: (
-          <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+          <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
           </svg>
         ),
@@ -67,16 +52,16 @@ const Contact = () => {
         isLink: true,
       },
       {
-        icon: <MapPin className="w-6 h-6" />,
-        title: "Местоположение",
-        value: "Россия, Екатеринбург",
+        icon: <MapPin className="h-5 w-5" aria-hidden="true" />,
+        title: "Город",
+        value: "Екатеринбург",
         link: "#",
         isLink: false,
       },
       {
-        icon: <Monitor className="w-6 h-6" />,
-        title: "Режим работы",
-        value: "Удаленно",
+        icon: <Monitor className="h-5 w-5" aria-hidden="true" />,
+        title: "Формат",
+        value: "Удалённо",
         link: "#",
         isLink: false,
       },
@@ -84,7 +69,6 @@ const Contact = () => {
     []
   );
 
-  // Auto-hide du statut d'envoi après 5 secondes
   useEffect(() => {
     if (submitStatus !== "idle") {
       const timer = setTimeout(() => setSubmitStatus("idle"), 5000);
@@ -92,94 +76,59 @@ const Contact = () => {
     }
   }, [submitStatus]);
 
-  // Animation GSAP optimisée
-  useEffect(() => {
-    if (contactInfoRef.current) {
-      staggerChildren(0.1);
-    }
-    if (formRef.current) {
-      setTimeout(() => {
-        fadeInRight(0.2);
-      }, 200);
-    }
-  }, []); // Dépendances vides pour ne se déclencher qu'une seule fois
-
   const validateField = (name: string, value: string) => {
     let error = "";
 
     switch (name) {
       case "name":
         if (!value.trim()) {
-          error = "Имя обязательно";
+          error = "Напишите имя";
         } else if (/[0-9]/.test(value)) {
-          error = "Имя должно содержать только буквы";
+          error = "Имя без цифр";
         } else if (value.length > 21) {
-          error = "Имя не должно превышать 21 символ";
+          error = "Не длиннее 21 символа";
         }
         break;
-
       case "email":
         if (!value.trim()) {
-          error = "Email обязателен";
-        } else if (!value.includes("@")) {
-          error = "Email должен содержать @";
+          error = "Напишите email";
         } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-          error = "Неверный формат email";
+          error = "Похоже, в email ошибка";
         }
         break;
-
       case "telegram":
         if (!value.trim()) {
-          error = "Имя пользователя Telegram обязательно";
+          error = "Напишите Telegram";
         } else if (!value.startsWith("@")) {
-          error = "Имя пользователя должно начинаться с @";
+          error = "Начните с @";
         } else if (value.length < 2) {
-          error = "Имя пользователя слишком короткое";
+          error = "Слишком коротко";
         }
         break;
-
       case "subject":
-        if (!value.trim()) {
-          error = "Тема обязательна";
-        }
+        if (!value.trim()) error = "Напишите тему";
         break;
-
       case "message":
-        if (!value.trim()) {
-          error = "Сообщение обязательно";
-        }
+        if (!value.trim()) error = "Напишите сообщение";
         break;
     }
 
     return error;
   };
 
-  // Validation améliorée du nom
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-
-    // Bloquer seulement les chiffres dans le nom (pas les lettres cyrilliques)
     if (name === "name" && /[0-9]/.test(value)) return;
 
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-
-    // Valider le champ en temps réel
-    const error = validateField(name, value);
-    setErrors({
-      ...errors,
-      [name]: error,
-    });
+    setFormData({ ...formData, [name]: value });
+    setErrors({ ...errors, [name]: validateField(name, value) });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Valider tous les champs selon le mode sélectionné
     const newErrors = {
       name: validateField("name", formData.name),
       email:
@@ -193,17 +142,9 @@ const Contact = () => {
     };
 
     setErrors(newErrors);
-
-    // Vérifier s'il y a des erreurs
-    const hasErrors = Object.values(newErrors).some((error) => error !== "");
-
-    if (hasErrors) {
-      return;
-    }
+    if (Object.values(newErrors).some((error) => error !== "")) return;
 
     setIsSubmitting(true);
-
-    // Simuler l'envoi du formulaire
     try {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setSubmitStatus("success");
@@ -228,265 +169,211 @@ const Contact = () => {
     }
   };
 
+  const fieldClass =
+    "w-full border-b border-base-content/20 bg-transparent py-3 text-base outline-none focus:border-primary";
+
   return (
-    <div className="bg-base-300 p-10 mb-10 md:mb-32" id="Contact">
-      <Title title="Контакты" />
-      <div className="max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Informations de contact */}
-          <div ref={contactInfoRef} className="space-y-6">
-            <h3 className="text-2xl font-bold mb-6">
-              Давайте обсудим ваш проект
-            </h3>
-            <p className="text-base-content/80">
-              Я всегда открыт для новых возможностей и сотрудничества. Не
-              стесняйтесь связаться со мной для обсуждения ваших проектов!
-            </p>
-
-            <div className="space-y-4">
-              {contactInfo.map((info, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-4 transition-transform duration-300"
-                >
-                  <div className="p-3 bg-accent/20 rounded-lg hover:bg-accent/30 transition-colors">
-                    {info.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-semibold">{info.title}</h4>
-                    {info.isLink ? (
-                      <a
-                        href={info.link}
-                        className="text-accent hover:underline"
-                        target={
-                          info.link.startsWith("http") ? "_blank" : undefined
-                        }
-                        rel={
-                          info.link.startsWith("http")
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <span className="text-base-content/70">{info.value}</span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Formulaire */}
-          <div
-            ref={formRef}
-            className="bg-base-100 p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            {/* Toggle Email/Telegram */}
-            <div className="flex justify-center mb-6">
-              <div className="join">
-                <button
-                  type="button"
-                  className={`join-item btn btn-sm transition-all duration-300 ${
-                    contactMethod === "email" ? "btn-accent" : "btn-outline"
-                  }`}
-                  onClick={() => setContactMethod("email")}
-                >
-                  <Mail className="w-4 h-4 mr-2" />
-                  Email
-                </button>
-                <button
-                  type="button"
-                  className={`join-item btn btn-sm transition-all duration-300 ${
-                    contactMethod === "telegram" ? "btn-accent" : "btn-outline"
-                  }`}
-                  onClick={() => setContactMethod("telegram")}
-                >
-                  <MessageCircle className="w-4 h-4 mr-2" />
-                  Telegram
-                </button>
-              </div>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium mb-2"
-                  >
-                    Полное имя *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    maxLength={21}
-                    pattern="[A-Za-zА-Яа-яÀ-ÿ\s]+"
-                    className={`input input-bordered w-full focus:input-accent transition-all duration-300 ${
-                      errors.name ? "input-error" : ""
-                    }`}
-                    placeholder="Ваше имя"
-                  />
-                  {errors.name && (
-                    <p className="text-error text-xs mt-1 animate-fade-in-error">
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <label
-                    htmlFor={contactMethod}
-                    className="block text-sm font-medium mb-2"
-                  >
-                    {contactMethod === "email" ? "Email *" : "Telegram *"}
-                  </label>
-                  <input
-                    type={contactMethod === "email" ? "email" : "text"}
-                    id={contactMethod}
-                    name={contactMethod}
-                    value={
-                      contactMethod === "email"
-                        ? formData.email
-                        : formData.telegram
-                    }
-                    onChange={handleChange}
-                    required={
-                      contactMethod === "email"
-                        ? true
-                        : contactMethod === "telegram"
-                    }
-                    className={`input input-bordered w-full focus:input-accent transition-all duration-300 ${
-                      errors[contactMethod] ? "input-error" : ""
-                    }`}
-                    placeholder={
-                      contactMethod === "email"
-                        ? "your@email.com"
-                        : "@your_username"
-                    }
-                  />
-                  {errors[contactMethod] && (
-                    <p className="text-error text-xs mt-1 animate-fade-in-error">
-                      {errors[contactMethod]}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="subject"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Тема *
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className={`input input-bordered w-full focus:input-accent transition-all duration-300 ${
-                    errors.subject ? "input-error" : ""
-                  }`}
-                  placeholder="Тема вашего сообщения"
-                />
-                {errors.subject && (
-                  <p className="text-error text-xs mt-1 animate-fade-in-error">
-                    {errors.subject}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium mb-2"
-                >
-                  Сообщение *
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className={`textarea textarea-bordered w-full focus:textarea-accent transition-all duration-300 ${
-                    errors.message ? "textarea-error" : ""
-                  }`}
-                  placeholder="Опишите ваш проект..."
-                />
-                {errors.message && (
-                  <p className="text-error text-xs mt-1 animate-fade-in-error">
-                    {errors.message}
-                  </p>
-                )}
-              </div>
-
-              {/* Messages de statut avec animations améliorées */}
-              {submitStatus === "success" && (
-                <div className="alert alert-success animate-slide-in-up">
-                  <CheckCircle className="w-5 h-5 animate-bounce" />
-                  <span className="animate-fade-in-error">
-                    Сообщение отправлено успешно! Я отвечу в ближайшее время.
+    <section id="Contact" className="scroll-mt-24 bg-base-200">
+      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+            Контакты
+          </h2>
+          <p className="mt-6 max-w-prose text-base leading-relaxed text-base-content/75">
+            Напишите, если нужен сайт или приложение. Отвечаю сам.
+          </p>
+          <ul className="mt-8 space-y-4">
+            {contactInfo.map((info) => (
+              <li key={info.title} className="flex items-center gap-4">
+                <span className="text-primary">{info.icon}</span>
+                <span>
+                  <span className="block text-sm text-base-content/50">
+                    {info.title}
                   </span>
-                </div>
-              )}
-
-              {submitStatus === "error" && (
-                <div className="alert alert-error animate-slide-in-up">
-                  <AlertCircle className="w-5 h-5 animate-pulse" />
-                  <span className="animate-fade-in-error">
-                    Ошибка отправки сообщения. Попробуйте еще раз.
-                  </span>
-                </div>
-              )}
-
-              {/* Politique de confidentialité */}
-              <div className="text-xs text-base-content/60 text-center">
-                Отправляя сообщение, вы соглашаетесь с{" "}
-                <button
-                  type="button"
-                  className="text-accent hover:underline transition-colors duration-300"
-                  onClick={() => window.open("/privacy-policy.html", "_blank")}
-                >
-                  политикой обработки персональных данных
-                </button>
-              </div>
-
-              {/* Bouton d'envoi avec animations améliorées */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`btn w-full transition-all duration-500 ease-in-out transform ${
-                  isSubmitting
-                    ? "btn-disabled bg-gradient-to-r from-accent to-accent-focus"
-                    : "btn-accent hover:btn-accent-focus hover:scale-105 active:scale-95"
-                }`}
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center space-x-2">
-                    <div className="custom-spinner w-5 h-5"></div>
-                    <span className="animate-pulse">Отправка...</span>
-                  </div>
-                ) : (
-                  <div className="flex items-center space-x-2 group">
-                    <Send className="w-4 h-4 animate-send-icon" />
-                    <span>Отправить сообщение</span>
-                  </div>
-                )}
-              </button>
-            </form>
-          </div>
+                  {info.isLink ? (
+                    <a
+                      href={info.link}
+                      className="underline decoration-base-content/30 underline-offset-4"
+                      target={info.link.startsWith("http") ? "_blank" : undefined}
+                      rel={
+                        info.link.startsWith("http")
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
+                    >
+                      {info.value}
+                    </a>
+                  ) : (
+                    <span>{info.value}</span>
+                  )}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
+
+        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+          <div className="flex gap-2" role="group" aria-label="Куда ответить">
+            <button
+              type="button"
+              aria-pressed={contactMethod === "email"}
+              onClick={() => setContactMethod("email")}
+              className={`px-4 py-2 text-sm ${
+                contactMethod === "email"
+                  ? "bg-primary text-primary-content"
+                  : "text-base-content/70"
+              }`}
+            >
+              Почта
+            </button>
+            <button
+              type="button"
+              aria-pressed={contactMethod === "telegram"}
+              onClick={() => setContactMethod("telegram")}
+              className={`px-4 py-2 text-sm ${
+                contactMethod === "telegram"
+                  ? "bg-primary text-primary-content"
+                  : "text-base-content/70"
+              }`}
+            >
+              Telegram
+            </button>
+          </div>
+
+          <div>
+            <label htmlFor="name" className="block text-sm">
+              Имя
+            </label>
+            <input
+              id="name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              required
+              maxLength={21}
+              autoComplete="name"
+              className={fieldClass}
+            />
+            {errors.name && (
+              <p className="mt-1 text-sm text-error">{errors.name}</p>
+            )}
+          </div>
+
+          {contactMethod === "email" ? (
+            <div>
+              <label htmlFor="email" className="block text-sm">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                autoComplete="email"
+                className={fieldClass}
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-error">{errors.email}</p>
+              )}
+            </div>
+          ) : (
+            <div>
+              <label htmlFor="telegram" className="block text-sm">
+                Telegram
+              </label>
+              <input
+                id="telegram"
+                name="telegram"
+                value={formData.telegram}
+                onChange={handleChange}
+                required
+                autoComplete="off"
+                placeholder="@username"
+                className={fieldClass}
+              />
+              {errors.telegram && (
+                <p className="mt-1 text-sm text-error">{errors.telegram}</p>
+              )}
+            </div>
+          )}
+
+          <div>
+            <label htmlFor="subject" className="block text-sm">
+              Тема
+            </label>
+            <input
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              required
+              className={fieldClass}
+            />
+            {errors.subject && (
+              <p className="mt-1 text-sm text-error">{errors.subject}</p>
+            )}
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm">
+              Сообщение
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              required
+              rows={5}
+              className={`${fieldClass} resize-y`}
+            />
+            {errors.message && (
+              <p className="mt-1 text-sm text-error">{errors.message}</p>
+            )}
+          </div>
+
+          {submitStatus === "success" && (
+            <p className="text-sm" role="status">
+              Сообщение отправлено. Отвечу в ближайшее время.
+            </p>
+          )}
+          {submitStatus === "error" && (
+            <p className="text-sm text-error" role="alert">
+              Не отправилось. Попробуйте ещё раз.
+            </p>
+          )}
+
+          <p className="text-sm text-base-content/55">
+            Отправляя сообщение, вы соглашаетесь с{" "}
+            <button
+              type="button"
+              className="underline decoration-base-content/30 underline-offset-4"
+              onClick={() => window.open("/privacy-policy.html", "_blank")}
+            >
+              политикой обработки персональных данных
+            </button>
+            .
+          </p>
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="bg-secondary px-5 py-3 text-sm font-medium text-secondary-content disabled:opacity-60"
+          >
+            {isSubmitting ? (
+              <span className="inline-flex items-center gap-2">
+                <span className="custom-spinner inline-block h-4 w-4" />
+                Отправка
+              </span>
+            ) : (
+              "Отправить"
+            )}
+          </button>
+        </form>
       </div>
-    </div>
+    </section>
   );
 };
 

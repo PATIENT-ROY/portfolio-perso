@@ -75,8 +75,8 @@ const WelcomeScreen = ({ onComplete }: WelcomeScreenProps) => {
 
   return (
     <div className="fixed inset-0 bg-base-100 z-50 flex items-center justify-center">
-      <div className="welcome-container text-center">
-        <h1 className="welcome-text text-4xl md:text-6xl font-bold text-base-content mb-8">
+      <div className="welcome-container text-center px-6">
+        <h1 className="welcome-text text-3xl sm:text-4xl md:text-6xl font-bold text-base-content mb-8 text-balance">
           Добро пожаловать в моё <span className="text-accent">портфолио</span>
         </h1>
 
