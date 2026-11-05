@@ -1,4 +1,3 @@
-import img5 from "../assets/projects/5.jpg";
 import adaptedCover from "../assets/projects/adapted/cover.webp";
 import adaptedStudy from "../assets/projects/adapted/study.webp";
 import adaptedLife from "../assets/projects/adapted/life.webp";
@@ -11,6 +10,9 @@ import market3 from "../assets/projects/market/3.jpg";
 import jekall1 from "../assets/projects/jekall/1.jpg";
 import jekall2 from "../assets/projects/jekall/2.jpg";
 import jekall3 from "../assets/projects/jekall/3.jpg";
+import booksHero from "../assets/projects/books/hero.jpg";
+import booksScreens from "../assets/projects/books/screens.jpg";
+import booksWorld from "../assets/projects/books/world.jpg";
 import fulfill1 from "../assets/projects/fulfill/1.jpg";
 import fulfill2 from "../assets/projects/fulfill/2.jpg";
 import fulfill3 from "../assets/projects/fulfill/3.jpg";
@@ -55,16 +57,10 @@ const projects: Project[] = [
     id: 3,
     title: "Books Academy",
     description:
-      "Сайт образовательной платформы для онлайн-обучения и управления курсами. Я отвечал за разработку React frontend. Современный интерфейс с аутентификацией пользователей.",
-    technologies: ["React", "TypeScript", "Tailwind CSS", "API Integration"],
-    repoLink: "https://github.com/PATIENT-ROY/todo-1.git",
-    images: [img5],
-    role: "Frontend-разработчик - Команда",
-    contributions: [
-      "Разработка пользовательского интерфейса",
-      "Интерфейс каталога курсов",
-      "UI аутентификации пользователей",
-    ],
+      "Приложение книжного клуба: личные заметки, расписание чтений, чаты и баллы. При регистрации участник попадает на факультет. Делал frontend в команде Fancy Solutions.",
+    technologies: ["React", "TypeScript", "Tailwind CSS"],
+    caseLink: "https://fancy-solutions.com/ru/case/books-academy",
+    images: [booksHero, booksScreens, booksWorld],
   },
   {
     id: 4,
@@ -111,13 +107,11 @@ const Projects = () => {
       <div className="mt-8">
         {projects.map((project) => (
           <Reveal key={project.id}>
-          <article
-            className="grid gap-5 border-t border-base-content/10 py-8"
-          >
+          <article className="grid min-w-0 gap-5 border-t border-base-content/10 py-8">
             <div
               className={
                 project.images.length > 1
-                  ? "grid grid-cols-1 gap-3 sm:grid-cols-3"
+                  ? "shot-row flex min-w-0 snap-x snap-mandatory gap-3 overflow-x-auto overscroll-x-contain sm:grid sm:grid-cols-3 sm:overflow-visible"
                   : "sm:max-w-[calc((100%-1.5rem)/3)]"
               }
             >
@@ -126,7 +120,12 @@ const Projects = () => {
                   key={src}
                   src={src}
                   alt={index === 0 ? project.title : ""}
-                  className="aspect-[16/10] w-full object-cover"
+                  draggable={false}
+                  className={
+                    project.images.length > 1
+                      ? "aspect-[16/10] w-[82%] shrink-0 snap-start object-cover sm:w-full"
+                      : "aspect-[16/10] w-full object-cover"
+                  }
                 />
               ))}
             </div>

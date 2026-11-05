@@ -88,6 +88,14 @@ img {
   transform: none;
 }
 
+.shot-row {
+  scrollbar-width: none;
+}
+
+.shot-row::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
