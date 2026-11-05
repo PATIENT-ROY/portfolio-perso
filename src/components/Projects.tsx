@@ -14,6 +14,7 @@ import jekall3 from "../assets/projects/jekall/3.jpg";
 import fulfill1 from "../assets/projects/fulfill/1.jpg";
 import fulfill2 from "../assets/projects/fulfill/2.jpg";
 import fulfill3 from "../assets/projects/fulfill/3.jpg";
+import Reveal from "./Reveal";
 
 const hasLink = (href?: string) => Boolean(href && href !== "#");
 
@@ -56,7 +57,6 @@ const projects: Project[] = [
     description:
       "Сайт образовательной платформы для онлайн-обучения и управления курсами. Я отвечал за разработку React frontend. Современный интерфейс с аутентификацией пользователей.",
     technologies: ["React", "TypeScript", "Tailwind CSS", "API Integration"],
-    demoLink: "https://books-academy.ru/welcome",
     repoLink: "https://github.com/PATIENT-ROY/todo-1.git",
     images: [img5],
     role: "Frontend-разработчик - Команда",
@@ -103,13 +103,15 @@ const Projects = () => {
       id="Projects"
       className="scroll-mt-24 border-t border-base-content/10 py-16 sm:py-20"
     >
-      <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
-        Работы
-      </h2>
+      <Reveal>
+        <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+          Работы
+        </h2>
+      </Reveal>
       <div className="mt-8">
         {projects.map((project) => (
+          <Reveal key={project.id}>
           <article
-            key={project.id}
             className="grid gap-5 border-t border-base-content/10 py-8"
           >
             <div
@@ -119,11 +121,11 @@ const Projects = () => {
                   : "sm:max-w-[calc((100%-1.5rem)/3)]"
               }
             >
-              {project.images.map((src) => (
+              {project.images.map((src, index) => (
                 <img
                   key={src}
                   src={src}
-                  alt=""
+                  alt={index === 0 ? project.title : ""}
                   className="aspect-[16/10] w-full object-cover"
                 />
               ))}
@@ -180,6 +182,7 @@ const Projects = () => {
               </div>
             </div>
           </article>
+          </Reveal>
         ))}
       </div>
     </section>

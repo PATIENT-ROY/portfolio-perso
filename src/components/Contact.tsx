@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Mail, MapPin, MessageCircle, Monitor } from "lucide-react";
+import Reveal from "./Reveal";
 
 const Contact = () => {
   type ContactMethod = "email" | "telegram";
@@ -54,7 +55,7 @@ const Contact = () => {
       {
         icon: <MapPin className="h-5 w-5" aria-hidden="true" />,
         title: "Город",
-        value: "Екатеринбург",
+        value: "Екатеринбург, Россия",
         link: "#",
         isLink: false,
       },
@@ -174,7 +175,7 @@ const Contact = () => {
 
   return (
     <section id="Contact" className="scroll-mt-24 bg-base-200">
-      <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16">
+      <Reveal className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 sm:py-20 lg:grid-cols-2 lg:gap-16">
         <div>
           <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
             Контакты
@@ -372,7 +373,7 @@ const Contact = () => {
             )}
           </button>
         </form>
-      </div>
+      </Reveal>
     </section>
   );
 };

@@ -1,11 +1,11 @@
 {
     "name": "Портфолио Ройдева",
     "short_name": "Ройдев",
-    "description": "Портфолио Ройдева, frontend-разработчика React & TypeScript",
+    "description": "Сайты для бизнеса и ваших идей. Екатеринбург, работаю удалённо.",
     "start_url": "/",
     "display": "standalone",
-    "background_color": "#ffffff",
-    "theme_color": "#3B82F6",
+    "background_color": "#E8EEF1",
+    "theme_color": "#E8EEF1",
     "orientation": "portrait-primary",
     "icons": [{
             "src": "/favicon-16x16.png",

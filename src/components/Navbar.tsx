@@ -9,7 +9,7 @@ interface NavbarProps {
 const links = [
   { id: "Home", label: "Главная" },
   { id: "About", label: "Обо мне" },
-  { id: "Experiences", label: "Навыки" },
+  { id: "Experiences", label: "Технологии" },
   { id: "Projects", label: "Работы" },
   { id: "Contact", label: "Контакты" },
 ];
@@ -73,7 +73,7 @@ const Navbar = ({ onNavigate }: NavbarProps) => {
 
       {isMenuOpen && (
         <nav
-          className="border-t border-base-content/10 bg-base-100 lg:hidden"
+          className="absolute inset-x-0 top-full z-50 border-t border-base-content/10 bg-base-100 shadow-[0_16px_40px_rgba(23,32,42,0.12)] lg:hidden"
           aria-label="Разделы"
         >
           <ul className="mx-auto max-w-6xl px-3 py-2 sm:px-6">

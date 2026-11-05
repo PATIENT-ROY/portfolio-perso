@@ -7,9 +7,9 @@ interface SEOHeadProps {
 }
 
 const SEOHead = ({
-  title = "Ройдев - Frontend-разработчик React & TypeScript",
-  description = "Портфолио Ройдева, frontend-разработчика, специализирующегося на React, TypeScript и Tailwind CSS. Откройте для себя мои проекты и навыки в веб-разработке.",
-  keywords = "frontend-разработчик, React, TypeScript, Tailwind CSS, портфолио, веб-разработка",
+  title = "Ройдев — сайты для бизнеса",
+  description = "Создаю сайты для бизнеса и ваших идей. От первого экрана до заявки. Екатеринбург, работаю удалённо.",
+  keywords = "сайты для бизнеса, разработка сайтов, React, TypeScript, портфолио, Екатеринбург",
 }: SEOHeadProps) => {
   useEffect(() => {
     // Update document title
@@ -40,7 +40,7 @@ const SEOHead = ({
       metaAuthor.setAttribute("name", "author");
       document.head.appendChild(metaAuthor);
     }
-    metaAuthor.setAttribute("content", "RoyDev");
+    metaAuthor.setAttribute("content", "Ройдев");
 
     // Update meta robots
     let metaRobots = document.querySelector('meta[name="robots"]');

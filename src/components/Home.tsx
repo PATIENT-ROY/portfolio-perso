@@ -1,4 +1,4 @@
-import img from "../assets/3.png";
+import HeroLaptop from "./HeroLaptop";
 
 interface HomeProps {
   onNavigate: (sectionId: string) => void;
@@ -8,15 +8,19 @@ const Home = ({ onNavigate }: HomeProps) => {
   return (
     <section
       id="Home"
-      className="grid items-center gap-12 scroll-mt-24 py-12 sm:py-16 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16 lg:py-24"
+      className="grid items-center gap-12 scroll-mt-24 py-12 sm:py-16 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-10 lg:py-20"
     >
       <div className="rise">
         <h1 className="font-display text-[clamp(4.25rem,16vw,7.5rem)] font-medium leading-[0.9] tracking-[-0.04em]">
           Рой
         </h1>
-        <p className="mt-6 max-w-md text-lg leading-relaxed text-base-content/75 sm:text-xl">
-          Делаю сайты и веб-приложения, которыми пользуются. React,
-          TypeScript, от лендинга до сервиса.
+        <p className="mt-6 max-w-lg text-xl font-medium leading-snug sm:text-2xl">
+          Создаю сайты для бизнеса и ваших идей.
+        </p>
+        <p className="mt-4 max-w-lg text-base leading-relaxed text-base-content/75">
+          Помогу рассказать о ваших услугах, показать товары или запустить
+          онлайн-сервис. Сделаю сайт удобным для телефона и компьютера — от
+          первого экрана до отправки заявки.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
           <button
@@ -32,27 +36,23 @@ const Home = ({ onNavigate }: HomeProps) => {
             Смотреть работы
           </button>
         </div>
-        <dl className="mt-12 grid max-w-md grid-cols-3 gap-4 text-sm">
-          <div>
+        <dl className="mt-10 space-y-2 text-sm">
+          <div className="flex gap-3">
             <dt className="text-base-content/50">Город</dt>
-            <dd className="mt-1">Екатеринбург</dd>
+            <dd>Екатеринбург, Россия</dd>
           </div>
-          <div>
+          <div className="flex gap-3">
             <dt className="text-base-content/50">Формат</dt>
-            <dd className="mt-1">Удалённо</dd>
+            <dd>Работаю удалённо</dd>
           </div>
-          <div>
-            <dt className="text-base-content/50">Стек</dt>
-            <dd className="mt-1">React</dd>
+          <div className="flex gap-3">
+            <dt className="text-base-content/50">Сопровождение</dt>
+            <dd>От идеи до запуска</dd>
           </div>
         </dl>
       </div>
 
-      <img
-        src={img}
-        alt="Рабочий стол: ноутбук с кодом"
-        className="aspect-[4/5] w-full max-w-md justify-self-center object-cover lg:max-w-none lg:justify-self-end"
-      />
+      <HeroLaptop />
     </section>
   );
 };

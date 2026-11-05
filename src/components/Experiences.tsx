@@ -6,6 +6,7 @@ import imgGithub from "../assets/techno/github.png";
 import imgTYPE from "../assets/techno/typescript.svg";
 import imgTAILWIND from "../assets/techno/tailwind.png";
 import imgNEXT from "../assets/techno/Next.png";
+import Reveal from "./Reveal";
 
 const skills = [
   { id: 1, name: "HTML", image: imgHTML },
@@ -24,21 +25,23 @@ const Experiences = () => {
       id="Experiences"
       className="scroll-mt-24 border-t border-base-content/10 py-16 sm:py-20"
     >
-      <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
-        Навыки
-      </h2>
-      <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
-        {skills.map((skill) => (
-          <li key={skill.id} className="flex items-center gap-3">
-            <img
-              src={skill.image}
-              alt=""
-              className="h-7 w-7 object-contain"
-            />
-            <span className="text-sm">{skill.name}</span>
-          </li>
-        ))}
-      </ul>
+      <Reveal>
+        <h2 className="font-display text-3xl font-medium tracking-tight sm:text-4xl">
+          Технологии, с которыми работаю
+        </h2>
+        <ul className="mt-10 flex flex-wrap gap-x-8 gap-y-5">
+          {skills.map((skill) => (
+            <li key={skill.id} className="flex items-center gap-3">
+              <img
+                src={skill.image}
+                alt=""
+                className="h-7 w-7 object-contain"
+              />
+              <span className="text-sm">{skill.name}</span>
+            </li>
+          ))}
+        </ul>
+      </Reveal>
     </section>
   );
 };

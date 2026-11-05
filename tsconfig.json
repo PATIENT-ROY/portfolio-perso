@@ -5,6 +5,10 @@
     "typeRoots": ["./portfolio/node_modules/@types", "./node_modules/@types"],
     "types": ["react", "react-dom"],
     "paths": {
+      "three": ["./node_modules/@types/three/index.d.ts"],
+      "three/examples/jsm/geometries/RoundedBoxGeometry.js": [
+        "./node_modules/@types/three/examples/jsm/geometries/RoundedBoxGeometry.d.ts"
+      ],
       "react": ["./portfolio/node_modules/@types/react"],
       "react/*": ["./portfolio/node_modules/@types/react/*"],
       "react-dom": ["./portfolio/node_modules/@types/react-dom"],
